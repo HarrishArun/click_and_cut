@@ -1,13 +1,21 @@
+import 'package:click_and_cut/screens/bookings.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../../const.dart';
 import 'card.dart';
 import 'seemorecard.dart';
 
-class parlour_scroll extends StatelessWidget {
+class parlour_scroll extends StatefulWidget {
   const parlour_scroll({
     super.key,
   });
 
+  @override
+  State<parlour_scroll> createState() => _parlour_scrollState();
+}
+
+class _parlour_scrollState extends State<parlour_scroll> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +33,13 @@ class parlour_scroll extends StatelessWidget {
                     color: Colors.white),
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    PersistentNavBarNavigator.pushNewScreen(
+                      context,
+                      screen: BookScreen(),
+                      withNavBar: false,
+                    );
+                  },
                   child: Text(
                     "SEE ALL >",
                     style: TextStyle(

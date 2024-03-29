@@ -54,8 +54,8 @@ class _locationState extends State<location> {
         currentposition.latitude, currentposition.longitude);
 
     setState(() {
-      stadd = placemark.reversed.last.subLocality.toString() +
-          " " +
+      stadd = placemark.reversed.last.street.toString() +
+          "," +
           placemark.reversed.last.locality.toString();
       print("Location updated: $stadd"); // Debug print
     });

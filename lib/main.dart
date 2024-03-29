@@ -7,6 +7,8 @@ import 'package:click_and_cut/screens/more.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'const.dart';
+
 const klightpurple = 0xFF8340A0;
 const kappBarGrey = 0xFF303030;
 
@@ -38,11 +40,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
   final List<Widget> _screens = [
     Screen1(),
-    Screen2(),
+    BookScreen(),
     Screen3(),
     Screen4(),
     Screen5(),
@@ -50,73 +50,14 @@ class _HomePageState extends State<HomePage> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(kappBarGrey),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Ramapuram,Chennai",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4.0, top: 1.0),
-                    child: Icon(
-                      Icons.keyboard_arrow_down,
-                      size: 15,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
-                    child: Icon(
-                      Icons.chat_bubble,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
-                    child: Icon(
-                      Icons.notifications,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                      bottom: 2,
-                    ),
-                    child: CircleAvatar(
-                      radius: 20,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-      body: _screens[_selectedIndex],
+      body: _screens[selectedIndex],
       bottomNavigationBar: bottomnavbar(),
     );
   }
