@@ -1,7 +1,7 @@
 import 'package:click_and_cut/const.dart';
 import 'package:click_and_cut/screens/bookings.dart';
 import 'package:click_and_cut/screens/favourite.dart';
-import 'package:click_and_cut/screens/homepage.dart';
+import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/more.dart';
 import 'package:click_and_cut/screens/feed.dart';
 import 'package:flutter/material.dart';
@@ -82,10 +82,7 @@ class bottomnavbar extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         colorBehindNavBar: Colors.black,
         gradient: LinearGradient(
-          colors: [
-            Color(0xFF6f4fc1),
-            Color(0xFF904088),
-          ],
+          colors: [Color(klightpurple), Color(kdarkpurple)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),

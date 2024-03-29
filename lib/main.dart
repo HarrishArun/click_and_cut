@@ -1,7 +1,7 @@
 import 'package:click_and_cut/components/bottomnavbar.dart';
 import 'package:click_and_cut/screens/bookings.dart';
 import 'package:click_and_cut/screens/favourite.dart';
-import 'package:click_and_cut/screens/homepage.dart';
+import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/feed.dart';
 import 'package:click_and_cut/screens/more.dart';
 import 'package:flutter/material.dart';
