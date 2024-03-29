@@ -1,3 +1,4 @@
+import 'package:click_and_cut/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,255 +19,190 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: homepage(),
+      home: HomePage(),
     );
   }
 }
 
-class homepage extends StatefulWidget {
-  const homepage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<homepage> createState() => _homepageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _homepageState extends State<homepage> {
+class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
+  final List<Widget> _screens = [
+    Screen1(),
+    Screen2(),
+    Screen3(),
+    Screen4(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.white,
-            //elevation: 2,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Ramapuram,Chennai",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      FaIcon(
-                        FontAwesomeIcons.caretDown,
-                        size: 15,
-                        color: Colors.black87,
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      FaIcon(
-                        FontAwesomeIcons.solidMessage,
-                        color: Colors.black87,
-                        size: 15,
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      FaIcon(
-                        FontAwesomeIcons.bell,
-                        color: Colors.black87,
-                        size: 15,
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      CircleAvatar(
-                        radius: 15,
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )),
-        body: Container(
-          color: Colors.black12,
-          child: Center(
-            child: SizedBox(
-              height: 250,
-              child: ListView(scrollDirection: Axis.horizontal, children: [
-                card(),
-                card(),
-                card(),
-                Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors.grey,
-                            width: 2, // Border width
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              10), // Optional: Border radius
-                          // Dotted border style
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.transparent,
-                              blurRadius: 0,
-                              spreadRadius: 1,
-                            ),
-                          ],
-                        ),
-                        height: 140,
-                        width: 280,
-                        child: Center(
-                            child: Text(
-                          "SEE MORE VENEUES",
-                          style: TextStyle(fontSize: 20, color: Colors.grey),
-                        )))),
-              ]),
-            ),
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.deepPurple,
-          unselectedItemColor: Colors.grey,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.scissors),
-              label: 'Book',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: 'Favorite',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.more_horiz),
-              label: 'More',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class card extends StatelessWidget {
-  const card({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-        ),
-        width: 280,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      appBar: AppBar(
+          backgroundColor: Color(kappBarGrey),
+          //elevation: 2,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                child: Image.asset(
-                  "lib/assets/img1.jpeg",
-                  // fit: BoxFit.fill,
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Ruckus Herkley",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      "Ramapuram,Chennai",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Colors.greenAccent,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          "4.5 (2)",
-                          style: TextStyle(color: Colors.green),
-                        ),
+                    // SizedBox(
+                    //   width: 4,
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4.0, top: 1.0),
+                      child: Icon(
+                        CupertinoIcons.chevron_down,
+                        size: 15,
+                        color: const Color.fromARGB(221, 255, 255, 255),
                       ),
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  8.0,
-                  4,
-                  8,
-                  4,
-                ),
-                child: Text(
-                  "Ekkatuthangal (~2.31kms)",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  8.0,
-                  4,
-                  8,
-                  4,
-                ),
-                child: Container(
-                  height: 0.4,
-                  width: double.infinity,
-                  color: Colors.grey,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  8.0,
-                  4,
-                  8,
-                  4,
-                ),
+                padding: const EdgeInsets.all(0),
                 child: Row(
                   children: [
-                    Text(
-                      "Upto 25% off",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Text(
-                      "INR 800 Onwards",
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
+                      child: Icon(
+                        CupertinoIcons.chat_bubble_2,
+                        color: const Color.fromARGB(221, 255, 255, 255),
+                        size: 25,
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
+                      child: Icon(
+                        CupertinoIcons.bell_circle_fill,
+                        color: const Color.fromARGB(221, 255, 255, 255),
+                        size: 25,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10.0,
+                        bottom: 2,
+                      ),
+                      child: CircleAvatar(
+                        radius: 20,
+                      ),
+                    )
                   ],
                 ),
-              ),
+              )
             ],
-          ),
+          )),
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: PersistentBottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
+    );
+  }
+}
+
+class PersistentBottomNavBar extends StatelessWidget {
+  final int selectedIndex;
+  final ValueChanged<int> onItemTapped;
+
+  const PersistentBottomNavBar({
+    Key? key,
+    required this.selectedIndex,
+    required this.onItemTapped,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      selectedItemColor: Color(klightpurple), // sets the active color
+      backgroundColor: Colors.black,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
         ),
+        BottomNavigationBarItem(
+          icon: FaIcon(FontAwesomeIcons.scissors),
+          label: 'Book',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Favorite',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.more_horiz),
+          label: 'More',
+        ),
+      ],
+      currentIndex: selectedIndex,
+      onTap: onItemTapped,
+    );
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.red,
+      child: Center(
+        child: Text('Screen 1'),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      child: Center(
+        child: Text('Screen 2'),
+      ),
+    );
+  }
+}
+
+class Screen3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      child: Center(
+        child: Text('Screen 3'),
+      ),
+    );
+  }
+}
+
+class Screen4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.yellow,
+      child: Center(
+        child: Text('Screen 4'),
       ),
     );
   }

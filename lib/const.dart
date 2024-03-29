@@ -1,1 +1,2 @@
-const klightpurple = 0xFFA88FEB;
+const klightpurple = 0xFF8340A0;
+const kappBarGrey = 0xFF262626;
