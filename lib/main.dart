@@ -1,8 +1,14 @@
-import 'package:click_and_cut/const.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:click_and_cut/components/bottomnavbar.dart';
+import 'package:click_and_cut/screens/bookings.dart';
+import 'package:click_and_cut/screens/favourite.dart';
+import 'package:click_and_cut/screens/homepage.dart';
+import 'package:click_and_cut/screens/feed.dart';
+import 'package:click_and_cut/screens/more.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+const klightpurple = 0xFF8340A0;
+const kappBarGrey = 0xFF303030;
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -19,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomePage(),
+      home: SafeArea(child: HomePage()),
     );
   }
 }
@@ -39,6 +45,7 @@ class _HomePageState extends State<HomePage> {
     Screen2(),
     Screen3(),
     Screen4(),
+    Screen5(),
   ];
 
   void _onItemTapped(int index) {
@@ -51,159 +58,66 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color(kappBarGrey),
-          //elevation: 2,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Ramapuram,Chennai",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+        backgroundColor: Color(kappBarGrey),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text(
+                    "Ramapuram,Chennai",
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4.0, top: 1.0),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      size: 15,
+                      color: Colors.white,
                     ),
-                    // SizedBox(
-                    //   width: 4,
-                    // ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4.0, top: 1.0),
-                      child: Icon(
-                        CupertinoIcons.chevron_down,
-                        size: 15,
-                        color: const Color.fromARGB(221, 255, 255, 255),
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
-                      child: Icon(
-                        CupertinoIcons.chat_bubble_2,
-                        color: const Color.fromARGB(221, 255, 255, 255),
-                        size: 25,
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
+                    child: Icon(
+                      Icons.chat_bubble,
+                      color: Colors.white,
+                      size: 25,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
-                      child: Icon(
-                        CupertinoIcons.bell_circle_fill,
-                        color: const Color.fromARGB(221, 255, 255, 255),
-                        size: 25,
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
+                    child: Icon(
+                      Icons.notifications,
+                      color: Colors.white,
+                      size: 25,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 10.0,
-                        bottom: 2,
-                      ),
-                      child: CircleAvatar(
-                        radius: 20,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10.0,
+                      bottom: 2,
+                    ),
+                    child: CircleAvatar(
+                      radius: 20,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
       body: _screens[_selectedIndex],
-      bottomNavigationBar: PersistentBottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
-    );
-  }
-}
-
-class PersistentBottomNavBar extends StatelessWidget {
-  final int selectedIndex;
-  final ValueChanged<int> onItemTapped;
-
-  const PersistentBottomNavBar({
-    Key? key,
-    required this.selectedIndex,
-    required this.onItemTapped,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      selectedItemColor: Color(klightpurple), // sets the active color
-      backgroundColor: Colors.black,
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.scissors),
-          label: 'Book',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'Favorite',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.more_horiz),
-          label: 'More',
-        ),
-      ],
-      currentIndex: selectedIndex,
-      onTap: onItemTapped,
-    );
-  }
-}
-
-class Screen1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-      child: Center(
-        child: Text('Screen 1'),
-      ),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-      child: Center(
-        child: Text('Screen 2'),
-      ),
-    );
-  }
-}
-
-class Screen3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: Center(
-        child: Text('Screen 3'),
-      ),
-    );
-  }
-}
-
-class Screen4 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
-      child: Center(
-        child: Text('Screen 4'),
-      ),
+      bottomNavigationBar: bottomnavbar(),
     );
   }
 }
