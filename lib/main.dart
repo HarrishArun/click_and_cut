@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+const kappBarGrey = 0xFF262626;
 void main() {
   runApp(const MyApp());
 }
@@ -41,7 +42,7 @@ class _homepageState extends State<homepage> {
     }
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor:Color(kappBarGrey),
             //elevation: 2,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,41 +53,49 @@ class _homepageState extends State<homepage> {
                     children: [
                       Text(
                         "Ramapuram,Chennai",
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(color:Colors.white,fontSize: 15),
                       ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      FaIcon(
-                        FontAwesomeIcons.caretDown,
-                        size: 15,
-                        color: Colors.black87,
+                      // SizedBox(
+                      //   width: 4,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.only(left:4.0,top: 1.0),
+                        child: Icon(
+                          CupertinoIcons.chevron_down,
+                          size: 15,
+                          color: const Color.fromARGB(221, 255, 255, 255),
+                        ),
                       )
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(0),
                   child: Row(
                     children: [
-                      FaIcon(
-                        FontAwesomeIcons.solidMessage,
-                        color: Colors.black87,
-                        size: 15,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8.0,10.0,8.0,8.0),
+                        child: Icon(
+                          CupertinoIcons.chat_bubble_2,
+                          color: const Color.fromARGB(221, 255, 255, 255),
+                          size: 25,
+                        ),
                       ),
-                      SizedBox(
-                        width: 4,
+                      
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8.0,10.0,8.0,8.0),
+                        child:Icon(
+                          CupertinoIcons.bell_circle_fill,
+                          color: const Color.fromARGB(221, 255, 255, 255),
+                          size: 25,
+                        ),
                       ),
-                      FaIcon(
-                        FontAwesomeIcons.bell,
-                        color: Colors.black87,
-                        size: 15,
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      CircleAvatar(
-                        radius: 15,
+                    
+                      Padding(
+                        padding: const EdgeInsets.only(left:10.0,bottom: 2,),
+                        child: CircleAvatar(
+                          radius: 20,
+                        ),
                       )
                     ],
                   ),
