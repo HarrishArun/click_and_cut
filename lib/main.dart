@@ -1,8 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-const klightpurple = 0xFF8340A0;
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -37,114 +36,103 @@ class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Ramapuram, Chennai",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  FaIcon(
-                    FontAwesomeIcons.caretDown,
-                    size: 15,
-                    color: Colors.black87,
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.solidMessage,
-                    color: Colors.black87,
-                    size: 15,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  FaIcon(
-                    FontAwesomeIcons.bell,
-                    color: Colors.black87,
-                    size: 15,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  CircleAvatar(
-                    radius: 15,
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-      body: Container(
-        color: Colors.black,
-        child: Center(
-          child: SizedBox(
-            height: 250,
-            child: ListView(scrollDirection: Axis.horizontal, children: [
-              card(),
-              card(),
-              card(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 2, // Border width
-                    ),
-                    borderRadius: BorderRadius.circular(10), // Border radius
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.transparent,
-                        blurRadius: 0,
-                        spreadRadius: 1,
+        appBar: AppBar(
+            backgroundColor: Colors.white,
+            //elevation: 2,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Ramapuram,Chennai",
+                        style: TextStyle(fontSize: 15),
                       ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.caretDown,
+                        size: 15,
+                        color: Colors.black87,
+                      )
                     ],
                   ),
-                  height: 140,
-                  width: 280,
-                  child: Center(
-                    child: Text(
-                      "SEE MORE VENUES",
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
-                    ),
-                  ),
                 ),
-              ),
-            ]),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      FaIcon(
+                        FontAwesomeIcons.solidMessage,
+                        color: Colors.black87,
+                        size: 15,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.bell,
+                        color: Colors.black87,
+                        size: 15,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      CircleAvatar(
+                        radius: 15,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )),
+        body: Container(
+          color: Colors.black12,
+          child: Center(
+            child: SizedBox(
+              height: 250,
+              child: ListView(scrollDirection: Axis.horizontal, children: [
+                card(),
+                card(),
+                card(),
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 2, // Border width
+                          ),
+                          borderRadius: BorderRadius.circular(
+                              10), // Optional: Border radius
+                          // Dotted border style
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.transparent,
+                              blurRadius: 0,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                        height: 140,
+                        width: 280,
+                        child: Center(
+                            child: Text(
+                          "SEE MORE VENEUES",
+                          style: TextStyle(fontSize: 20, color: Colors.grey),
+                        )))),
+              ]),
+            ),
           ),
         ),
-      ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Colors
-              .black, // sets the background color of the `BottomNavigationBar`
-          textTheme: Theme.of(context).textTheme.copyWith(
-                caption: TextStyle(
-                    color: Colors
-                        .yellow), // sets the inactive color of the `BottomNavigationBar`
-              ),
-        ),
-        child: BottomNavigationBar(
-          selectedItemColor: Color(
-              klightpurple), // sets the active color of the `BottomNavigationBar`
-          backgroundColor: Colors.black,
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.deepPurple,
+          unselectedItemColor: Colors.grey,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
