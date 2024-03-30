@@ -12,11 +12,6 @@ class Saloon_view_booking extends StatelessWidget {
     return Column(
       children: [
         CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
-        CardWidget(),
       ],
     );
   }
