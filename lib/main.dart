@@ -7,6 +7,7 @@ import 'package:click_and_cut/screens/more.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'components/Appbar.dart';
 import 'const.dart';
 
 const klightpurple = 0xFF8340A0;
@@ -57,6 +58,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Color(kappBarGrey),
+          //elevation: 2,
+          title: Appbar()),
       body: _screens[selectedIndex],
       bottomNavigationBar: bottomnavbar(),
     );

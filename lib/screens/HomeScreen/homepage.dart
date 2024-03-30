@@ -4,7 +4,7 @@ import 'package:click_and_cut/screens/HomeScreen/HomeScreenComponents/saloon_scr
 
 import 'package:flutter/material.dart';
 
-import 'HomeScreenComponents/Appbar_home.dart';
+import '../../components/Appbar.dart';
 
 import 'HomeScreenComponents/logo_containerr.dart';
 import 'HomeScreenComponents/privacyandtocContainer.dart';

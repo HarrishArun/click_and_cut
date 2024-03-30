@@ -1,10 +1,11 @@
+import 'package:click_and_cut/main.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../const.dart';
 import '../../BookingScreen/bookings.dart';
-import 'card.dart';
-import 'seemorecard.dart';
+import '../../../components/card.dart';
+import '../../../components/seemorecard.dart';
 
 class saloon_scroll extends StatefulWidget {
   const saloon_scroll({
@@ -65,9 +66,9 @@ class _saloon_scrollState extends State<saloon_scroll> {
             height: 250,
             child: ListView(scrollDirection: Axis.horizontal, children: [
               CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
+                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
               CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
+                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
               seeMoreCard("See More Saloons ", () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,

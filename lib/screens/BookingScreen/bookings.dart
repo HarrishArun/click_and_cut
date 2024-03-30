@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../components/Appbar.dart';
 import '../../const.dart';
 
 import 'BookingScreenComponents/Parlour_view.dart';
@@ -17,6 +18,10 @@ class _BookScreenState extends State<BookScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+            backgroundColor: Color(kappBarGrey),
+            //elevation: 2,
+            title: Appbar()),
         body: Container(
             color: Colors.black,
             child: Padding(

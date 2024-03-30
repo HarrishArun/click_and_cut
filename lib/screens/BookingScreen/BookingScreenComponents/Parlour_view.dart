@@ -1,6 +1,8 @@
+import 'package:click_and_cut/screens/saloondetails_screen/SaloonDetailsScreen.dart';
 import 'package:flutter/material.dart';
 
-import '../../HomeScreen/HomeScreenComponents/card.dart';
+import '../../../components/card.dart';
+import '../../../main.dart';
 
 class Parlour_view_booking extends StatelessWidget {
   const Parlour_view_booking({
@@ -12,11 +14,11 @@ class Parlour_view_booking extends StatelessWidget {
     return Column(
       children: [
         CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-            "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
+            "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
         CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-            "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
+            "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
         CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-            "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
+            "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
       ],
     );
   }
