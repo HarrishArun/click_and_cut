@@ -1,5 +1,5 @@
 import 'package:click_and_cut/components/bottomnavbar.dart';
-import 'package:click_and_cut/screens/BookingScreen/bookings.dart';
+import 'package:click_and_cut/screens/BookingScreen/bookings_screen.dart';
 import 'package:click_and_cut/screens/favourite.dart';
 import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/feed.dart';
@@ -57,13 +57,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Color(kappBarGrey),
-          //elevation: 2,
-          title: Appbar()),
-      body: _screens[selectedIndex],
-      bottomNavigationBar: bottomnavbar(),
+    return SafeArea(
+      child: Scaffold(
+        body: _screens[selectedIndex],
+        bottomNavigationBar: bottomnavbar(),
+      ),
     );
   }
 }

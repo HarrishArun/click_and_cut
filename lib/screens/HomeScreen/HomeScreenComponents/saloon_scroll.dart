@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../const.dart';
-import '../../BookingScreen/bookings.dart';
+import '../../BookingScreen/bookings_screen.dart';
 import '../../../components/card.dart';
 import '../../../components/seemorecard.dart';
 

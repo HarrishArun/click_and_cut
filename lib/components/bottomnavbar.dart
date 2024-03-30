@@ -1,5 +1,5 @@
 import 'package:click_and_cut/const.dart';
-import 'package:click_and_cut/screens/BookingScreen/bookings.dart';
+import 'package:click_and_cut/screens/BookingScreen/bookings_screen.dart';
 import 'package:click_and_cut/screens/favourite.dart';
 import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/more.dart';

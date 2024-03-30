@@ -1,17 +1,19 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:click_and_cut/components/Appbar.dart';
 import 'package:click_and_cut/const.dart';
-import 'package:click_and_cut/screens/saloondetails_screen/Static/RulesAndResPonsibilitiesHeader.dart';
-import 'package:click_and_cut/screens/saloondetails_screen/Widgets/CartDemoNav.dart';
+
 import 'package:click_and_cut/screens/saloondetails_screen/Widgets/Carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'Static/RulesAndResPonsibilitiesScrollable.dart';
+import 'Widgets/Booknowbutton.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class SaloonDetailsPage extends StatefulWidget {
   final List<String> image;
-  final String _ProfileImage;
-  final String _TutorFname;
+
+  final String Saloonname;
+  final String time;
+  final String address;
   final String _TutorLname;
   final String _Qualification;
   final String _Rating;
@@ -21,8 +23,9 @@ class SaloonDetailsPage extends StatefulWidget {
 
   SaloonDetailsPage(
     this.image,
-    this._ProfileImage,
-    this._TutorFname,
+    this.Saloonname,
+    this.time,
+    this.address,
     this._TutorLname,
     this._Qualification,
     this._Rating,
@@ -40,39 +43,253 @@ class _SaloonDetailsPageState extends State<SaloonDetailsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(kbgwhite),
+        appBar: AppBar(
+            backgroundColor: Colors.white,
+            automaticallyImplyLeading: false,
+            //elevation: 2,
+            title: Appbar()),
         body: Column(
           children: [
             Container(
+              color: Color(kbgwhite),
               child: Column(
                 children: [
                   //  TutorProfileImage(ProfileImage: _ProfileImage),
-                  Carousel_slider(widget.image),
-                  TutorsNameDetail(
-                    TutorFname: widget._TutorFname,
-                    TutorLname: widget._TutorLname,
-                    Qualification: widget._Qualification,
-                    Rating: widget._Rating,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0.0, 16, 0, 16),
+                    child: Carousel_slider(widget.image),
                   ),
-                  TutorsExpDetail(
-                    Experience: widget._Experience,
-                    Category: widget._Category,
-                  ),
-                  TutorsAddrDetail(),
-                  Row(
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 20.0, bottom: 10.0),
-                        child: Row(
-                          children: [
-                            Text(widget._Timeduration,
-                                style: TextStyle(fontSize: 18.5))
-                          ],
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Material(
+                          elevation: 4,
+                          borderRadius: BorderRadius.circular(25),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.call,
+                                size: 20,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Material(
+                          elevation: 4,
+                          borderRadius: BorderRadius.circular(25),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.favorite_outline,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Material(
+                          elevation: 4,
+                          borderRadius: BorderRadius.circular(25),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.share,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  RulesAndResPonsibilitiesHeader(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.Saloonname,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.clock,
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          widget.time,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 15),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          size: 17,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          widget.address,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 15),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  side: BorderSide(
+                                      color: Color(klightpurple),
+                                      style: BorderStyle.solid,
+                                      width: 1)),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12.0, vertical: 15.0),
+                            ),
+                            onPressed: () {},
+                            icon: Icon(Icons.location_pin),
+                            label: Text("Show in Map")),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 1,
+                    width: double.infinity,
+                    color: Colors.grey,
+                  ),
+                  Container(
+                    //   decoration: BoxDecoration(
+                    //borderRadius: BorderRadius.circular(20),
+                    //color: Colors.white),
+                    height: 100,
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: GestureDetector(
+                            onTapDown: (details) {
+                              // Calculate the rating based on the tap position
+                              final RenderBox box =
+                                  context.findRenderObject() as RenderBox;
+                              final double tapPosition =
+                                  box.globalToLocal(details.globalPosition).dx;
+                              final double itemSize =
+                                  box.size.width / 5; // Assuming 5 stars
+                              int newRating = (tapPosition / itemSize).ceil();
+
+                              // Ensure the new rating is within the range of 1 to 5 stars
+                              newRating = newRating.clamp(1, 5);
+
+                              setState(() {
+                                rating = newRating.toDouble();
+                              });
+                            },
+                            child: RatingBar.builder(
+                              initialRating: rating,
+                              minRating: 1, // Minimum rating
+                              direction: Axis.horizontal,
+                              // /allowHalfRating: true,
+                              itemCount: 5,
+                              itemSize: 30.0,
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                setState(() {
+                                  rating = rating;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                          child: Text(
+                            "Rate now",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 1,
+                    width: double.infinity,
+                    color: Colors.grey,
+                  ),
+
                   // Expanded(
                   //   child: Container(
                   //     child: RulesAndResPonsibilitiesScrollable(
@@ -85,197 +302,7 @@ class _SaloonDetailsPageState extends State<SaloonDetailsPage> {
             // Other widgets as needed
           ],
         ),
-        bottomNavigationBar: Container(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 15),
-            child: CartDemoNav(
-                ProfileImage: widget._ProfileImage,
-                TutorFname: widget._TutorFname,
-                TutorLname: widget._TutorLname,
-                Qualification: widget._Qualification,
-                Rating: widget._Rating,
-                Experience: widget._Experience,
-                Category: widget._Category,
-                Timeduration: widget._Timeduration),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class TutorProfileImage extends StatelessWidget {
-  const TutorProfileImage({
-    super.key,
-    required String ProfileImage,
-  }) : _ProfileImage = ProfileImage;
-
-  final String _ProfileImage;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 130,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            Color(0xFF008080), // Dark teal
-            Color(0xFF00CED1), // Light teal
-          ],
-        ),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            child: Image.asset(
-              _ProfileImage,
-            ),
-          ),
-          Positioned(
-            top: 20.0,
-            right: 30.0,
-            child: Container(
-              height: 35,
-              width: 35,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: InkWell(
-                onTap: () {},
-                child: Icon(
-                  Icons.share,
-                  size: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class TutorsAddrDetail extends StatelessWidget {
-  const TutorsAddrDetail({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0, bottom: 3),
-          child: Row(
-            children: [
-              Icon(
-                Icons.location_on,
-                color: Colors.red,
-                size: 17,
-              ),
-              Text(
-                "Address",
-                style: TextStyle(fontSize: 18.5),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class TutorsExpDetail extends StatelessWidget {
-  const TutorsExpDetail({
-    super.key,
-    required String Experience,
-    required String Category,
-  })  : _Experience = Experience,
-        _Category = Category;
-
-  final String _Experience;
-  final String _Category;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 3),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(
-          _Experience,
-          style: TextStyle(fontSize: 18.5),
-        ),
-        Row(
-          children: [
-            Text(
-              _Category,
-              style: TextStyle(fontSize: 18.5),
-            ),
-          ],
-        )
-      ]),
-    );
-  }
-}
-
-class TutorsNameDetail extends StatelessWidget {
-  const TutorsNameDetail({
-    super.key,
-    required String TutorFname,
-    required String TutorLname,
-    required String Qualification,
-    required String Rating,
-  })  : _TutorFname = TutorFname,
-        _TutorLname = TutorLname,
-        _Qualification = Qualification,
-        _Rating = Rating;
-
-  final String _TutorFname;
-  final String _TutorLname;
-  final String _Qualification;
-  final String _Rating;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 3, top: 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            Text(
-              _TutorFname + _TutorLname,
-              style: TextStyle(fontSize: 20.0, color: Color(klightpurple)),
-            ),
-            SizedBox(width: 5.0),
-            Text(_Qualification)
-          ]),
-          Row(
-            children: [
-              Text(
-                _Rating,
-                style: TextStyle(fontSize: 18.5),
-              ),
-              SizedBox(
-                width: 2,
-              ),
-              FaIcon(
-                FontAwesomeIcons.solidStar,
-                color: Colors.amber,
-                size: 15,
-              )
-            ],
-          )
-        ],
+        bottomNavigationBar: Booknow_Button(),
       ),
     );
   }

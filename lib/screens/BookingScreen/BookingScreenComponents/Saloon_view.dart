@@ -20,8 +20,17 @@ class Saloon_view_booking extends StatelessWidget {
             "4.5",
             "15",
             "1000",
-            SaloonDetailsPage(["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                "fsg", "fsg", "fsf", "fs", "fsf", "fsf", "sf", "df")),
+            SaloonDetailsPage(
+                ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+                "Toni and Guy",
+                "5AM-9PM",
+                "Ramapuram,Chennai",
+                "fs",
+                "fsf",
+                "fsf",
+                "sf",
+                "df",
+                "dsf")),
       ],
     );
   }

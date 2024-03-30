@@ -1,5 +1,5 @@
 import 'package:click_and_cut/main.dart';
-import 'package:click_and_cut/screens/BookingScreen/bookings.dart';
+import 'package:click_and_cut/screens/BookingScreen/bookings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 

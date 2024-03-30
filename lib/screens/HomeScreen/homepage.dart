@@ -19,6 +19,7 @@ class Screen1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Color(kappBarGrey),
+          automaticallyImplyLeading: false,
           //elevation: 2,
           title: Appbar()),
       body: Container(
