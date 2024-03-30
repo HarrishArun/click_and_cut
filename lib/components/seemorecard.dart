@@ -14,7 +14,7 @@ class seeMoreCard extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Container(
               decoration: BoxDecoration(
-                color: Color(kappBarGrey),
+                color: Colors.white,
                 border: Border.all(
                   color: Colors.grey,
                   width: 2,

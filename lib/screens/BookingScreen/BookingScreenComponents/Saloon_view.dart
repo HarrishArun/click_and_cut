@@ -2,7 +2,6 @@ import 'package:click_and_cut/screens/saloondetails_screen/SaloonDetailsScreen.d
 import 'package:flutter/material.dart';
 
 import '../../../components/card.dart';
-import '../../../main.dart';
 
 class Saloon_view_booking extends StatelessWidget {
   const Saloon_view_booking({
@@ -21,16 +20,50 @@ class Saloon_view_booking extends StatelessWidget {
             "15",
             "1000",
             SaloonDetailsPage(
-                ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                "Toni and Guy",
-                "5AM-9PM",
-                "Ramapuram,Chennai",
-                "fs",
-                "fsf",
-                "fsf",
-                "sf",
-                "df",
-                "dsf")),
+              ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+              "Toni and Guy",
+              "5AM-9PM",
+              "Ramapuram,Chennai",
+            )),
+        CardWidget(
+            ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+            "Toni and Guy",
+            "Ramapuram",
+            "4.5",
+            "15",
+            "1000",
+            SaloonDetailsPage(
+              ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+              "Toni and Guy",
+              "5AM-9PM",
+              "Ramapuram,Chennai",
+            )),
+        CardWidget(
+            ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+            "Toni and Guy",
+            "Ramapuram",
+            "4.5",
+            "15",
+            "1000",
+            SaloonDetailsPage(
+              ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+              "Toni and Guy",
+              "5AM-9PM",
+              "Ramapuram,Chennai",
+            )),
+        CardWidget(
+            ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+            "Toni and Guy",
+            "Ramapuram",
+            "4.5",
+            "15",
+            "1000",
+            SaloonDetailsPage(
+              ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+              "Toni and Guy",
+              "5AM-9PM",
+              "Ramapuram,Chennai",
+            )),
       ],
     );
   }

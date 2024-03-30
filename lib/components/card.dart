@@ -39,7 +39,7 @@ class _CardWidgetState extends State<CardWidget> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color(kappBarGrey),
+                  color: Colors.white,
                 ),
                 width: 280,
                 child: Column(
@@ -95,7 +95,7 @@ class _CardWidgetState extends State<CardWidget> {
                             widget.name,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                           Container(
@@ -117,7 +117,7 @@ class _CardWidgetState extends State<CardWidget> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         widget.area,
-                        style: TextStyle(fontSize: 10, color: Colors.white),
+                        style: TextStyle(fontSize: 10, color: Colors.black),
                       ),
                     ),
                     Padding(
@@ -134,14 +134,14 @@ class _CardWidgetState extends State<CardWidget> {
                         children: [
                           Text(
                             "Upto" + widget.offerpercentage + "off",
-                            style: TextStyle(fontSize: 10, color: Colors.white),
+                            style: TextStyle(fontSize: 10, color: Colors.black),
                           ),
                           SizedBox(width: 3),
                           Text(
-                            "INR" + widget.amount + "Onwards",
+                            "INR" + widget.amount + " Onwards",
                             style: TextStyle(
                               fontSize: 10,
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

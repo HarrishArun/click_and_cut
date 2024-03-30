@@ -31,7 +31,7 @@ class _saloon_scrollState extends State<saloon_scroll> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Colors.white),
+                    color: Colors.black),
               ),
               TextButton(
                   onPressed: () {

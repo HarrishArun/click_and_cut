@@ -14,24 +14,12 @@ class SaloonDetailsPage extends StatefulWidget {
   final String Saloonname;
   final String time;
   final String address;
-  final String _TutorLname;
-  final String _Qualification;
-  final String _Rating;
-  final String _Experience;
-  final String _Category;
-  final String _Timeduration;
 
   SaloonDetailsPage(
     this.image,
     this.Saloonname,
     this.time,
     this.address,
-    this._TutorLname,
-    this._Qualification,
-    this._Rating,
-    this._Experience,
-    this._Category,
-    this._Timeduration,
   );
 
   @override

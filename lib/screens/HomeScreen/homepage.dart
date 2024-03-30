@@ -17,13 +17,14 @@ class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(kbgwhite),
       appBar: AppBar(
-          backgroundColor: Color(kappBarGrey),
+          backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           //elevation: 2,
           title: Appbar()),
       body: Container(
-        color: Colors.black,
+        //color: Colors.black,
         child: ListView(
           scrollDirection: Axis.vertical,
           children: [

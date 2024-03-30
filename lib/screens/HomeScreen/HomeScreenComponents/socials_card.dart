@@ -14,7 +14,7 @@ class socials_card extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Color(kappBarGrey),
+          color: Colors.white,
         ),
         height: 100,
         width: double.infinity,
@@ -24,18 +24,18 @@ class socials_card extends StatelessWidget {
           children: [
             Text(
               "Follow us on",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
             ),
             IconButton(
               onPressed: () {},
-              icon: FaIcon(FontAwesomeIcons.instagram, color: Colors.white),
+              icon: FaIcon(FontAwesomeIcons.instagram, color: Colors.black),
             ),
             IconButton(
                 onPressed: () {},
-                icon: FaIcon(FontAwesomeIcons.twitter, color: Colors.white)),
+                icon: FaIcon(FontAwesomeIcons.twitter, color: Colors.black)),
             IconButton(
                 onPressed: () {},
-                icon: FaIcon(FontAwesomeIcons.linkedin, color: Colors.white))
+                icon: FaIcon(FontAwesomeIcons.linkedin, color: Colors.black))
           ],
         ),
       ),
