@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 const kappBarGrey = 0xFF4F4F4F; // Define the color value for kappBarGrey
 
 class CardWidget extends StatefulWidget {
-  const CardWidget({Key? key}) : super(key: key);
-
+  final List<String> image;
+  final String name;
+  final String area;
+  final String offerpercentage;
+  final String amount;
+  final String rating;
+  const CardWidget(this.image, this.name, this.area, this.rating,
+      this.offerpercentage, this.amount);
   @override
   _CardWidgetState createState() => _CardWidgetState();
 }
@@ -36,7 +42,7 @@ class _CardWidgetState extends State<CardWidget> {
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(10)),
                         image: DecorationImage(
-                          image: AssetImage("lib/assets/img1.jpeg"),
+                          image: AssetImage(widget.image[0]),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -71,7 +77,9 @@ class _CardWidgetState extends State<CardWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Ruckus Herkley",
+                        //"Ruckus Herkley",
+
+                        widget.name,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -85,7 +93,7 @@ class _CardWidgetState extends State<CardWidget> {
                           color: Colors.greenAccent,
                         ),
                         child: Text(
-                          "4.5 (2)",
+                          widget.rating + "(5)",
                           style: TextStyle(color: Colors.green),
                         ),
                       ),
@@ -95,7 +103,9 @@ class _CardWidgetState extends State<CardWidget> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    "Ekkatuthangal (~2.31kms)",
+                    //"Ekkatuthangal (~2.31kms)",
+
+                    widget.area,
                     style: TextStyle(fontSize: 10, color: Colors.white),
                   ),
                 ),
@@ -112,12 +122,12 @@ class _CardWidgetState extends State<CardWidget> {
                   child: Row(
                     children: [
                       Text(
-                        "Upto 25% off",
+                        "Upto" + widget.offerpercentage + "off",
                         style: TextStyle(fontSize: 10, color: Colors.white),
                       ),
                       SizedBox(width: 3),
                       Text(
-                        "INR 800 Onwards",
+                        "INR" + widget.amount + "Onwards",
                         style: TextStyle(
                           fontSize: 10,
                           color: Colors.white,

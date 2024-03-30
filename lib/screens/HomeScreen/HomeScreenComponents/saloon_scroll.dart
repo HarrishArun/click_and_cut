@@ -64,9 +64,10 @@ class _saloon_scrollState extends State<saloon_scroll> {
           SizedBox(
             height: 250,
             child: ListView(scrollDirection: Axis.horizontal, children: [
-              CardWidget(),
-              CardWidget(),
-              CardWidget(),
+              CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
+              CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000"),
               seeMoreCard("See More Saloons ", () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,
