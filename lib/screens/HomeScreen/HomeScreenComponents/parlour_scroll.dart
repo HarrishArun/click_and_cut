@@ -1,4 +1,4 @@
-import 'package:click_and_cut/screens/bookings.dart';
+import 'package:click_and_cut/screens/BookingScreen/bookings.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -39,6 +39,9 @@ class _parlour_scrollState extends State<parlour_scroll> {
                       screen: BookScreen(),
                       withNavBar: false,
                     );
+                    setState(() {
+                      segmentedControlValue = 1;
+                    });
                   },
                   child: Text(
                     "SEE ALL >",
@@ -64,7 +67,19 @@ class _parlour_scrollState extends State<parlour_scroll> {
               CardWidget(),
               CardWidget(),
               CardWidget(),
-              seeMoreCard("See More Parlour ", () {}),
+              seeMoreCard(
+                "See More Parlour ",
+                () {
+                  PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    screen: BookScreen(),
+                    withNavBar: false,
+                  );
+                  setState(() {
+                    segmentedControlValue = 1;
+                  });
+                },
+              ),
             ]),
           ),
         ],

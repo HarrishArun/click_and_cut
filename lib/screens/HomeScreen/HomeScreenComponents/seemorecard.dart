@@ -8,33 +8,36 @@ class seeMoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-            decoration: BoxDecoration(
-              color: Color(kappBarGrey),
-              border: Border.all(
-                color: Colors.grey,
-                width: 2,
-              ),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.transparent,
-                  blurRadius: 0,
-                  spreadRadius: 1,
+    return GestureDetector(
+      onTap: next,
+      child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              decoration: BoxDecoration(
+                color: Color(kappBarGrey),
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 2,
                 ),
-              ],
-            ),
-            height: 140,
-            width: 280,
-            child: Center(
-                child: Text(
-              text,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontStyle: FontStyle.italic,
-                  color: Colors.grey),
-            ))));
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.transparent,
+                    blurRadius: 0,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              height: 140,
+              width: 280,
+              child: Center(
+                  child: Text(
+                text,
+                style: TextStyle(
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey),
+              )))),
+    );
   }
 }

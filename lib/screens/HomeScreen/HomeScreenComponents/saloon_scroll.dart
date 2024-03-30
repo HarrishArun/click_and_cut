@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../../const.dart';
+import '../../BookingScreen/bookings.dart';
 import 'card.dart';
 import 'seemorecard.dart';
 
-class saloon_scroll extends StatelessWidget {
+class saloon_scroll extends StatefulWidget {
   const saloon_scroll({
     super.key,
   });
 
+  @override
+  State<saloon_scroll> createState() => _saloon_scrollState();
+}
+
+class _saloon_scrollState extends State<saloon_scroll> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +33,16 @@ class saloon_scroll extends StatelessWidget {
                     color: Colors.white),
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    PersistentNavBarNavigator.pushNewScreen(
+                      context,
+                      screen: BookScreen(),
+                      withNavBar: false,
+                    );
+                    setState(() {
+                      segmentedControlValue = 0;
+                    });
+                  },
                   child: Text(
                     "SEE ALL >",
                     style: TextStyle(
@@ -50,7 +67,16 @@ class saloon_scroll extends StatelessWidget {
               CardWidget(),
               CardWidget(),
               CardWidget(),
-              seeMoreCard("See More Saloons ", () {}),
+              seeMoreCard("See More Saloons ", () {
+                PersistentNavBarNavigator.pushNewScreen(
+                  context,
+                  screen: BookScreen(),
+                  withNavBar: false,
+                );
+                setState(() {
+                  segmentedControlValue = 0;
+                });
+              }),
             ]),
           ),
         ],
