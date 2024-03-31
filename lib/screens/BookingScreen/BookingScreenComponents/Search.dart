@@ -12,7 +12,7 @@ class Searchbar extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.0),
       child: TextField(
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.black),
         decoration: InputDecoration(
             hintText: 'Search...',
             hintStyle: TextStyle(color: Colors.grey),

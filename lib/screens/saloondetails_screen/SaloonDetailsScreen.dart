@@ -1,10 +1,10 @@
-import 'package:click_and_cut/components/Appbar.dart';
 import 'package:click_and_cut/const.dart';
 
 import 'package:click_and_cut/screens/saloondetails_screen/Widgets/Carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../components/Appbar.dart';
 import 'Widgets/Booknowbutton.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -35,7 +35,7 @@ class _SaloonDetailsPageState extends State<SaloonDetailsPage> {
         appBar: AppBar(
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
-            //elevation: 2,
+            elevation: 2,
             title: Appbar()),
         body: Column(
           children: [
@@ -277,17 +277,9 @@ class _SaloonDetailsPageState extends State<SaloonDetailsPage> {
                     width: double.infinity,
                     color: Colors.grey,
                   ),
-
-                  // Expanded(
-                  //   child: Container(
-                  //     child: RulesAndResPonsibilitiesScrollable(
-                  //         tutorResponsibilities: tutorResponsibilities),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
-            // Other widgets as needed
           ],
         ),
         bottomNavigationBar: Booknow_Button(),

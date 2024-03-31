@@ -6,6 +6,7 @@ import '../../../const.dart';
 import '../../BookingScreen/bookings_screen.dart';
 import '../../../components/card.dart';
 import '../../../components/seemorecard.dart';
+import '../../saloondetails_screen/SaloonDetailsScreen.dart';
 
 class saloon_scroll extends StatefulWidget {
   const saloon_scroll({
@@ -65,10 +66,71 @@ class _saloon_scrollState extends State<saloon_scroll> {
           SizedBox(
             height: 250,
             child: ListView(scrollDirection: Axis.horizontal, children: [
-              CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
-              CardWidget(["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy", "Ramapuram", "4.5", "15", "1000", HomePage()),
+              CardWidget(
+                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy",
+                  "Ramapuram",
+                  "4.5",
+                  "15",
+                  "1000",
+                  SaloonDetailsPage(
+                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+                    "Toni and Guy",
+                    "5AM-9PM",
+                    "Ramapuram,Chennai",
+                  )),
+              CardWidget(
+                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy",
+                  "Ramapuram",
+                  "4.5",
+                  "15",
+                  "1000",
+                  SaloonDetailsPage(
+                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+                    "Toni and Guy",
+                    "5AM-9PM",
+                    "Ramapuram,Chennai",
+                  )),
+              CardWidget(
+                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy",
+                  "Ramapuram",
+                  "4.5",
+                  "15",
+                  "1000",
+                  SaloonDetailsPage(
+                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+                    "Toni and Guy",
+                    "5AM-9PM",
+                    "Ramapuram,Chennai",
+                  )),
+              CardWidget(
+                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy",
+                  "Ramapuram",
+                  "4.5",
+                  "15",
+                  "1000",
+                  SaloonDetailsPage(
+                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+                    "Toni and Guy",
+                    "5AM-9PM",
+                    "Ramapuram,Chennai",
+                  )),
+              CardWidget(
+                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+                  "Toni and Guy",
+                  "Ramapuram",
+                  "4.5",
+                  "15",
+                  "1000",
+                  SaloonDetailsPage(
+                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
+                    "Toni and Guy",
+                    "5AM-9PM",
+                    "Ramapuram,Chennai",
+                  )),
               seeMoreCard("See More Saloons ", () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,
