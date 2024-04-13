@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 import 'components/Appbar.dart';
 import 'const.dart';
 
-const klightpurple = 0xFF8340A0;
+// const klightpurple = 0xFF8340A0;
 const kappBarGrey = 0xFF303030;
 
 void main() {

@@ -106,9 +106,12 @@
 //   }
 // }
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:click_and_cut/screens/LoginPage/OtploginScreen.dart';
 import 'package:click_and_cut/screens/LoginPage/Signuppage.dart';
+import 'package:click_and_cut/screens/LoginPage/widgets/orcontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../const.dart';
 import '../../main.dart';
@@ -291,11 +294,20 @@ class _LandingPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 5, 5, 12),
             child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(klightpurple),
+                    Color(kdarkpurple)
+                  ], // Example gradient colors
+                ),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
               height: 50,
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(kbluepastle),
+                  backgroundColor: Colors.transparent,
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -314,29 +326,68 @@ class _LandingPageState extends State<LoginPage> {
               ),
             ),
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignupPage()),
-              );
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'New User?',
-                  style: TextStyle(color: Colors.black),
+          orcontainer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  // Add your Gmail button logic here
+                },
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: FaIcon(
+                      FontAwesomeIcons.google,
+                      size: 25,
+                      //color: Colors.blue,
+                    ),
+                  ),
                 ),
-                SizedBox(
-                  width: 5,
+              ),
+              SizedBox(width: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OTPLoginPage()));
+                  // Add your phone button logic here
+                },
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.phone,
+                    size: 25,
+//color: Colors.green,
+                  ),
                 ),
-                Text(
-                  'Sign Up',
-                  style: TextStyle(color: Colors.blue),
-                ),
-              ],
-            ),
+              ),
+            ],
           )
         ]);
   }

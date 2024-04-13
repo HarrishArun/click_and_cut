@@ -1,14 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:click_and_cut/main.dart';
 import 'package:click_and_cut/screens/LoginPage/Signuppage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../const.dart';
-
-import 'BottomSheets/loginbuttonand_sheet.dart';
-import 'BottomSheets/signup_buttonand_sheet.dart';
+import 'Loginpage.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -89,19 +86,84 @@ class _LandingPageState extends State<LandingPage> {
   Widget _buildForm() {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
-        //signup
         color: Color(kbgwhite),
         padding: EdgeInsets.fromLTRB(18, 5, 18, 5),
         width: double.infinity,
-        child: SignupButtonandSheet(context: context),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(klightpurple),
+                Color(kdarkpurple)
+              ], // Example gradient colors
+            ),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignupPage()),
+              );
+            },
+            child: Text(
+              'Sign up',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+              // Set the button's background color to transparent
+              backgroundColor: Colors.transparent,
+            ),
+          ),
+        ),
       ),
       Container(
-          //login
-          padding: EdgeInsets.fromLTRB(18, 5, 18, 5),
-          width: double.infinity,
-          child: LoginbuttonandSheet(
-            context: context,
-          )),
+        padding: EdgeInsets.fromLTRB(18, 5, 18, 5),
+        width: double.infinity,
+        child: OutlinedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
+          },
+          child: ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return LinearGradient(
+                colors: [
+                  Color(kdarkpurple),
+                  Colors.white
+                ], // Text gradient colors
+              ).createShader(bounds);
+            },
+            child: Text(
+              'Log in',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(
+                color: Color(kdarkpurple),
+                width: 1), // Set border color and width
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10), // Set border radius
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          ),
+        ),
+      ),
     ]);
   }
 }

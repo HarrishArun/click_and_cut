@@ -133,25 +133,85 @@ class LoginbuttonandSheet extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'New User?',
-                                        style: TextStyle(color: Colors.black),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        // Add your Gmail button logic here
+                                      },
+                                      child: Container(
+                                        width: 50,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.2),
+                                              spreadRadius: 2,
+                                              blurRadius: 5,
+                                              offset: Offset(0, 3),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Icon(
+                                          Icons.mail,
+                                          size: 25,
+                                          //color: Colors.blue,
+                                        ),
                                       ),
-                                      SizedBox(
-                                        width: 5,
+                                    ),
+                                    SizedBox(width: 20),
+                                    GestureDetector(
+                                      onTap: () {
+                                        // Add your phone button logic here
+                                      },
+                                      child: Container(
+                                        width: 50,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.2),
+                                              spreadRadius: 2,
+                                              blurRadius: 5,
+                                              offset: Offset(0, 3),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Icon(
+                                          Icons.phone,
+                                          size: 25,
+//color: Colors.green,
+                                        ),
                                       ),
-                                      Text(
-                                        'Sign Up',
-                                        style: TextStyle(color: Colors.blue),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 )
+                                // TextButton(
+                                //   onPressed: () {},
+                                //   child: Row(
+                                //     mainAxisAlignment: MainAxisAlignment.center,
+                                //     children: [
+                                //       Text(
+                                //         'New User?',
+                                //         style: TextStyle(color: Colors.black),
+                                //       ),
+                                //       SizedBox(
+                                //         width: 5,
+                                //       ),
+                                //       Text(
+                                //         'Sign Up',
+                                //         style: TextStyle(color: Colors.blue),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // )
                               ])),
                     ),
                   ),
@@ -173,6 +233,82 @@ class LoginbuttonandSheet extends StatelessWidget {
           borderRadius: BorderRadius.circular(10), // Set border radius
         ),
         padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      ),
+    );
+  }
+}
+
+class PhoneAuthBottomSheet extends StatelessWidget {
+  const PhoneAuthBottomSheet({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+        color: Color(kbgwhite),
+        child: Container(
+          color: Color(kbgwhite),
+          child: Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Phone Authentication",
+                  style: TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.w500),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 5, 5, 12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Phone Number',
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 5, 5, 12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'OTP',
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Add your phone authentication logic here
+                      print('Phone Authenticated!');
+                      Navigator.pop(context); // Close the bottom sheet
+                    },
+                    child: Text('Verify'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
