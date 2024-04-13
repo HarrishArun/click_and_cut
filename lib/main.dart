@@ -1,5 +1,6 @@
 import 'package:click_and_cut/components/bottomnavbar.dart';
 import 'package:click_and_cut/screens/BookingScreen/bookings_screen.dart';
+import 'package:click_and_cut/screens/LoginPage/LandingPage.dart';
 import 'package:click_and_cut/screens/favourite.dart';
 import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/feed.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: SafeArea(child: HomePage()),
+      home: SafeArea(child: LandingPage()),
     );
   }
 }
