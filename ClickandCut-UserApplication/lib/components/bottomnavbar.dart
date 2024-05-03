@@ -3,7 +3,7 @@ import 'package:click_and_cut/screens/BookingScreen/bookings_screen.dart';
 import 'package:click_and_cut/screens/favourite.dart';
 import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/more.dart';
-import 'package:click_and_cut/screens/feed.dart';
+import 'package:click_and_cut/screens/FeedsScreen/FeedsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
