@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     BookScreen(),
     Screen3(),
     FeedsScreen(),
-    Screen5(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

@@ -28,7 +28,7 @@ class _bottomnavbarState extends State<bottomnavbar> {
         BookScreen(),
         Screen3(),
         FeedsScreen(),
-        Screen5(),
+        ProfileScreen(),
       ],
       items: [
         PersistentBottomNavBarItem(
