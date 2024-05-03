@@ -4,7 +4,7 @@ import 'package:click_and_cut/screens/LoginPage/LandingPage.dart';
 import 'package:click_and_cut/screens/favourite.dart';
 import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
 import 'package:click_and_cut/screens/FeedsScreen/FeedsScreen.dart';
-import 'package:click_and_cut/screens/more.dart';
+import 'package:click_and_cut/screens/ProfileScreen/ProfileScreen.dart';
 import 'package:click_and_cut/services/locationservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

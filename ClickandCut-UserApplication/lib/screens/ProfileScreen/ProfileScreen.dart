@@ -1,6 +1,9 @@
+import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+
+import 'Screens/ProfileDetailsScreen.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -17,26 +20,32 @@ class ProfileScreen extends StatelessWidget {
           OptionCard(
             icon: Icons.bookmark,
             title: 'My Bookings',
+            ontap: () {},
           ),
           OptionCard(
             icon: Icons.help,
             title: 'Help & Support',
+            ontap: () {},
           ),
           OptionCard(
             icon: Icons.question_answer,
             title: 'FAQ',
+            ontap: () {},
           ),
           OptionCard(
             icon: Icons.person_add,
             title: 'Invite',
+            ontap: () {},
           ),
           OptionCard(
             icon: Icons.policy,
             title: 'Terms and Conditions',
+            ontap: () {},
           ),
           OptionCard(
             icon: Icons.logout,
             title: 'Logout',
+            ontap: () {},
           ),
         ],
       ),
@@ -68,11 +77,19 @@ class ProfileCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.0),
-                Text(
-                  'View Full Profile',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileDetailScreen()));
+                  },
+                  child: Text(
+                    'View Full Profile',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ],
@@ -87,20 +104,22 @@ class ProfileCard extends StatelessWidget {
 class OptionCard extends StatelessWidget {
   final IconData icon;
   final String title;
+  final VoidCallback ontap;
 
-  const OptionCard({Key? key, required this.icon, required this.title})
+  const OptionCard(
+      {Key? key, required this.icon, required this.title, required this.ontap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Icon(icon),
-        title: Text(title),
-        onTap: () {
-          // Handle option card tap
-        },
-      ),
+          leading: Icon(
+            icon,
+            color: Color(kdarkpurple),
+          ),
+          title: Text(title),
+          onTap: () => ontap),
     );
   }
 }
