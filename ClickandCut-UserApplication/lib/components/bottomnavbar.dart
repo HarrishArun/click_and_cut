@@ -27,7 +27,7 @@ class _bottomnavbarState extends State<bottomnavbar> {
         Screen1(),
         BookScreen(),
         Screen3(),
-        Screen4(),
+        FeedsScreen(),
         Screen5(),
       ],
       items: [
