@@ -10,90 +10,109 @@ class _ChairsSelectionState extends State<ChairsSelection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'How many chairs do you have?',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.deepPurple),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.remove),
-                  onPressed: () {
-                    setState(() {
-                      if (_selectedChairs > 1) {
-                        _selectedChairs--;
-                      }
-                    });
-                  },
-                ),
-                SizedBox(width: 20),
-                Text(
-                  _selectedChairs.toString(),
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(width: 20),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    setState(() {
-                      if (_selectedChairs < 25) {
-                        _selectedChairs++;
-                      }
-                    });
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Handle the button click to display the selected number of chairs
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Selected Chairs'),
-                      content: Text(
-                        'You selected $_selectedChairs chair(s).',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(
-                            'OK',
-                            style: TextStyle(fontSize: 16, color: Colors.deepPurple),
-                          ),
+    return Scaffold(
+      body: Column(
+        children: [
+          SizedBox(
+            height: 60,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Your Throne Count',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.remove),
+                    onPressed: () {
+                      setState(() {
+                        if (_selectedChairs > 1) {
+                          _selectedChairs--;
+                        }
+                      });
+                    },
+                    color: Colors.black,
+                  ),
+                  SizedBox(width: 20),
+                  Text(
+                    _selectedChairs.toString(),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+                  ),
+                  SizedBox(width: 20),
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      setState(() {
+                        if (_selectedChairs < 25) {
+                          _selectedChairs++;
+                        }
+                      });
+                    },
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Handle the button click to display the selected number of chairs
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Throne Count'),
+                        content: Text(
+                          'You have selected $_selectedChairs throne(s).',
+                          style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
-                      ],
-                    );
-                  },
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(
-                  'Confirm',
-                  style: TextStyle(fontSize: 15, color: Colors.white), // Added color here
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(
+                              'OK',
+                              style: TextStyle(fontSize: 16, color: Colors.deepPurple),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Text(
+                    'Confirm',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shadowColor: Colors.deepPurple,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                 ),
               ),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                // Removed primary here
+            ],
+          ),
+          SizedBox(
+            height: 70,
+          ),
+          Container(
+            height: 300,
+            width: 360,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/furniture.png'), // Use a majestic background image
+                fit: BoxFit.contain,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,12 @@
+// import 'dart:js';
+
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/ProgressBar/profileSetUpProgressBar.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/accountHolderName.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/addShopImages.dart';
+import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/bankAccountDetails.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/chairsSelection.dart';
+import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/proofSubmission.dart';
+import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/serviceCostAndTime.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopDetails.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopLocation.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopOpeningHours.dart';
@@ -44,7 +49,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         
             ProfileSetUpProgressBar(
               currentStep: _currentStep,
-              totalSteps: 11,
+              totalSteps: 10,
             ),
         
             SizedBox(height: 20.0),
@@ -61,7 +66,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               // color: Colors.blueAccent,
               child: Row(
                 
-                mainAxisAlignment: _currentStep!=0? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment:(_currentStep != 10 && _currentStep!=0)
+                      ? MainAxisAlignment.spaceBetween
+                      : MainAxisAlignment.spaceEvenly,
                 children: [
                   if (_currentStep != 0)
                     ElevatedButton(
@@ -80,10 +87,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ),
                       ),
                     ),
+                  if(_currentStep!=10)
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        _currentStep < 11 ? _currentStep += 1 : null;
+                        _currentStep < 10 ? _currentStep += 1 : null;
                       });
                     },
                     child: Icon(Icons.arrow_forward,size: 25,),
@@ -131,8 +139,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           return BankAccountDetails();
         case 10:
           return ProofSubmission();
-        case 11:
-          return WaitingForApproval();
         default:
           return Container();
       }
@@ -152,38 +158,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 
 
-class ServiceCostAndTime extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Service Cost And Time Step'),
-    );
-  }
-}
 
-class BankAccountDetails extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Bank Account Details Step'),
-    );
-  }
-}
 
-class ProofSubmission extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Proof Submission Step'),
-    );
-  }
-}
 
-class WaitingForApproval extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Waiting For Approval Step'),
-    );
-  }
-}
+
+
+
