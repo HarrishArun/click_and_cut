@@ -1,8 +1,13 @@
 import 'package:click_and_cut/const.dart';
+import 'package:click_and_cut/screens/LoginPage/LandingPage.dart';
+import 'package:click_and_cut/screens/ProfileScreen/Screens/FAQScreen.dart';
+import 'package:click_and_cut/screens/ProfileScreen/Screens/MyBookingScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../components/Appbar.dart';
 import 'Screens/ProfileDetailsScreen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -10,7 +15,10 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        //elevation: 2,
+        title: Appbar(),
       ),
       body: ListView(
         padding: EdgeInsets.all(16.0),
@@ -20,7 +28,10 @@ class ProfileScreen extends StatelessWidget {
           OptionCard(
             icon: Icons.bookmark,
             title: 'My Bookings',
-            ontap: () {},
+            ontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyBookingScreen()));
+            },
           ),
           OptionCard(
             icon: Icons.help,
@@ -30,7 +41,10 @@ class ProfileScreen extends StatelessWidget {
           OptionCard(
             icon: Icons.question_answer,
             title: 'FAQ',
-            ontap: () {},
+            ontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FAQScreen()));
+            },
           ),
           OptionCard(
             icon: Icons.person_add,
@@ -45,7 +59,13 @@ class ProfileScreen extends StatelessWidget {
           OptionCard(
             icon: Icons.logout,
             title: 'Logout',
-            ontap: () {},
+            ontap: () {
+              PersistentNavBarNavigator.pushNewScreen(
+                context,
+                screen: LandingPage(),
+                withNavBar: false,
+              );
+            },
           ),
         ],
       ),
@@ -57,6 +77,7 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Row(
@@ -113,13 +134,22 @@ class OptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       child: ListTile(
-          leading: Icon(
-            icon,
-            color: Color(kdarkpurple),
+          leading: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.purple.shade100),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                icon,
+                color: Color(kdarkpurple),
+              ),
+            ),
           ),
           title: Text(title),
-          onTap: () => ontap),
+          onTap: ontap),
     );
   }
 }

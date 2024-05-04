@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../FeedModel.dart';
 import '../FeedsScreen.dart';
@@ -90,8 +91,8 @@ class _FeedCardState extends State<FeedCard>
                   ScaleTransition(
                     scale: _animationController
                         .drive(CurveTween(curve: Curves.easeInOut)),
-                    child: Icon(
-                      Icons.favorite,
+                    child: FaIcon(
+                      FontAwesomeIcons.scissors,
                       color: Colors.red,
                       size: 80.0,
                     ),
@@ -105,8 +106,12 @@ class _FeedCardState extends State<FeedCard>
               Row(
                 children: [
                   IconButton(
-                    icon:
-                        Icon(isLiked ? Icons.favorite : Icons.favorite_border),
+                    icon: FaIcon(
+                      isLiked
+                          ? FontAwesomeIcons.scissors
+                          : FontAwesomeIcons.scissors,
+                      color: isLiked ? Colors.red : Colors.grey,
+                    ),
                     onPressed: toggleLike,
                   ),
                   IconButton(

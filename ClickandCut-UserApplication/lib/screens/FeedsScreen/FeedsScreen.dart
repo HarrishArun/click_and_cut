@@ -1,6 +1,7 @@
 import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
 
+import '../../components/Appbar.dart';
 import 'FeedModel.dart';
 import 'Widgets/FeedCard.dart';
 
@@ -30,7 +31,10 @@ class _FeedsScreenState extends State<FeedsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feeds'),
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        //elevation: 2,
+        title: Appbar(),
       ),
       body: ListView.builder(
         itemCount: items.length,

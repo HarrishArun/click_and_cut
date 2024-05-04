@@ -23,7 +23,22 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Detail'),
+        automaticallyImplyLeading: false,
+        title: Text(
+          "Profile Details",
+          style: TextStyle(
+            fontSize: 20,
+            foreground: Paint()
+              ..shader = LinearGradient(
+                colors: [
+                  Color(0xFF6f4fc1),
+                  Color(0xFF904088),
+                ],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
+          ),
+        ),
         actions: [],
       ),
       body: SingleChildScrollView(
@@ -32,6 +47,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Card(
+              color: Colors.white,
               margin: EdgeInsets.only(bottom: 16.0),
               elevation: 4.0,
               child: Padding(
@@ -102,6 +118,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
               ),
             ),
             Card(
+              color: Colors.white,
               margin: EdgeInsets.only(bottom: 16.0),
               elevation: 4.0,
               child: Padding(

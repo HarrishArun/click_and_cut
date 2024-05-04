@@ -1,6 +1,8 @@
+import 'package:click_and_cut/screens/ProfileScreen/Screens/ProfileDetailsScreen.dart';
 import 'package:click_and_cut/services/locationservices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Appbar extends StatefulWidget {
   const Appbar({Key? key}) : super(key: key);
@@ -87,12 +89,21 @@ class _AppbarState extends State<Appbar> {
                   ),
                 ),
               ),
-              CircleAvatar(
-                radius: 18,
-                child: Icon(
-                  CupertinoIcons.person_alt_circle,
-                  size: 25,
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  PersistentNavBarNavigator.pushNewScreen(
+                    context,
+                    screen: ProfileDetailScreen(),
+                    withNavBar: false,
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 18,
+                  child: Icon(
+                    CupertinoIcons.person_alt_circle,
+                    size: 25,
+                    color: Colors.white,
+                  ),
                 ),
               )
             ],
