@@ -5,6 +5,7 @@ import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/chairsSele
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopDetails.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopLocation.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopOpeningHours.dart';
+import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/ShopServices/shopServices.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/widgets/shopType.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,14 +150,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 
 
-class ShopServices extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Shop Services Step'),
-    );
-  }
-}
+
 
 class ServiceCostAndTime extends StatelessWidget {
   @override
