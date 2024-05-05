@@ -1,9 +1,11 @@
 import 'package:clickandcut_admin/Providers/SelectedServicesProvider.dart';
 import 'package:clickandcut_admin/Screens/RegistrationScreens/registrationScreen.dart';
+import 'package:clickandcut_admin/Screens/RegistrationScreens/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:provider/provider.dart';
+
 
 
 Future main() async {
@@ -23,8 +25,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false, //brandblue
         theme: FlexThemeData.light(scheme: FlexScheme.deepPurple),
-        home: SafeArea(child: RegistrationScreen()),
+        home: SafeArea(child: SplashScreen()),
       ),
     );
   }
 }
+
+
+

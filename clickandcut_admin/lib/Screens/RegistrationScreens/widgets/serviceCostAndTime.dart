@@ -31,6 +31,7 @@ class ServiceCostAndTime extends StatelessWidget {
                 : Center(
                     child: Column(
                       children: [
+                        SizedBox(height: 110,),
                         Image.asset(
                           'assets/empty-folder.png', // Path to your null image asset
                           height: 200, // Adjust height as needed
@@ -117,7 +118,7 @@ class _ServiceInputFieldsState extends State<ServiceInputFields> {
                         onChanged: (value) {
                           setState(() {
                             _price = double.tryParse(value) ?? 0.0;
-                            widget.service.price = _price; // Update the price in the service object
+                            widget.service.price = _price; 
                           });
                         },
                       ),

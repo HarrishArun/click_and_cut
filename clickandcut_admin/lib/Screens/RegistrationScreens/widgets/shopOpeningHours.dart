@@ -5,16 +5,41 @@ class ShopOpeningHours extends StatefulWidget {
   State<ShopOpeningHours> createState() => _ShopOpeningHoursState();
 }
 
-class _ShopOpeningHoursState extends State<ShopOpeningHours> {
+class _ShopOpeningHoursState extends State<ShopOpeningHours>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+  bool isHoliday = false;
+  TimeOfDay? openingHoursFrom;
+  TimeOfDay? openingHoursTo;
+  List<TimeRange> breakTimings = [];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        itemCount: 7, // For 7 days of the week
-        itemBuilder: (context, index) {
-          return DayItem(dayIndex: index);
-        },
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Text(
+              'Shop Opening Hours',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 7,
+            itemBuilder: (context, index) {
+              return DayItem(dayIndex: index);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
@@ -47,7 +72,10 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
           children: [
             Text(
               _getDayName(widget.dayIndex),
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, ),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 10),
             Row(
@@ -83,27 +111,42 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Text('Opening Hours:',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
-                  // SizedBox(width: 10),
+                  Text(
+                    'Opening Hours:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  SizedBox(width: 10),
                   ElevatedButton(
                     onPressed: () => _selectOpeningHours(context),
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: Colors.grey[200], // Neutral button color
+                      // onPrimary: Colors.black, // Text color
+                    ),
                     child: Text(
                       openingHoursFrom != null
                           ? '${_formatTimeOfDay(openingHoursFrom!)}'
-                          : 'Start time',
-                          // style: TextStyle(fontSize: 10),
+                          : 'Start',
                     ),
                   ),
-                  // SizedBox(width: 10),
-                  Text("to",style: TextStyle(fontSize: 15),),
-                  // SizedBox(width: 10),
+                  SizedBox(width: 10),
+                  Text(
+                    "to",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  SizedBox(width: 10),
                   ElevatedButton(
                     onPressed: () => _selectClosingHours(context),
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: Colors.grey[200], // Neutral button color
+                      // onPrimary: Colors.black, // Text color
+                    ),
                     child: Text(
                       openingHoursTo != null
                           ? '${_formatTimeOfDay(openingHoursTo!)}'
-                          : 'End time',
-                          // style: TextStyle(fontSize: 10),
+                          : 'End',
                     ),
                   ),
                 ],
@@ -122,6 +165,7 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
                           breakTimings.remove(timing);
                         });
                       },
+                      color: Colors.red, // Clear button color
                     ),
                   ],
                 ),
@@ -129,8 +173,11 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () => _addBreakTiming(context),
-                child: Text('Add Break',),
-                
+                style: ElevatedButton.styleFrom(
+                  shadowColor: Colors.blue[200], // Accent button color
+                  // onPrimary: Colors.white, // Text color
+                ),
+                child: Text('Add Break'),
               ),
             ],
           ],
@@ -150,7 +197,7 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
       initialTime: TimeOfDay(hour: 9, minute: 0),
       builder: (BuildContext context, Widget? child) {
         return Theme(
-          data: ThemeData.dark(), // Apply dark theme
+          data: ThemeData.light(), // Apply light theme for better visibility
           child: child!,
         );
       },
@@ -162,24 +209,23 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
     }
   }
 
-
   Future<void> _selectClosingHours(BuildContext context) async {
-  final selectedEndTime = await showTimePicker(
-    context: context,
-    initialTime: openingHoursTo ?? TimeOfDay(hour: 21, minute: 0),
-    builder: (BuildContext context, Widget? child) {
-      return Theme(
-        data: ThemeData.dark(), // Apply dark theme
-        child: child!,
-      );
-    },
-  );
-  if (selectedEndTime != null) {
-    setState(() {
-      openingHoursTo = selectedEndTime;
-    });
+    final selectedEndTime = await showTimePicker(
+      context: context,
+      initialTime: openingHoursTo ?? TimeOfDay(hour: 21, minute: 0),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light(), // Apply light theme for better visibility
+          child: child!,
+        );
+      },
+    );
+    if (selectedEndTime != null) {
+      setState(() {
+        openingHoursTo = selectedEndTime;
+      });
+    }
   }
-}
 
   void _addBreakTiming(BuildContext context) async {
     TimeOfDay? selectedStartTime;
@@ -191,7 +237,7 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
       initialTime: TimeOfDay(hour: 12, minute: 0),
       builder: (BuildContext context, Widget? child) {
         return Theme(
-          data: ThemeData.dark(), // Use dark theme for time picker
+          data: ThemeData.light(), // Use light theme for time picker
           child: child!,
         );
       },
@@ -204,7 +250,7 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
         initialTime: TimeOfDay(hour: 13, minute: 0),
         builder: (BuildContext context, Widget? child) {
           return Theme(
-            data: ThemeData.dark(),
+            data: ThemeData.light(), // Use light theme for time picker
             child: child!,
           );
         },
@@ -220,7 +266,10 @@ class _DayItemState extends State<DayItem> with AutomaticKeepAliveClientMixin {
   }
 
   String _formatTimeOfDay(TimeOfDay time) {
-    return '${time.hour}:${time.minute.toString().padLeft(2, '0')}';
+    int hour = time.hourOfPeriod;
+    String minute = time.minute.toString().padLeft(2, '0');
+    String period = time.period == DayPeriod.am ? 'AM' : 'PM';
+    return '$hour:$minute $period';
   }
 }
 

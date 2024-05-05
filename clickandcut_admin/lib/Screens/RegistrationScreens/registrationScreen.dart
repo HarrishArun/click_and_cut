@@ -30,6 +30,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Center(
           child: Text(
             "Registration Details",
@@ -41,11 +42,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
       body: Container(
         color: Colors.white38,
-        padding: EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(1.0),
         child: ListView(
           scrollDirection: Axis.vertical,
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SizedBox(height: 10.0),
         
             ProfileSetUpProgressBar(
               currentStep: _currentStep,

@@ -18,28 +18,54 @@ class _ShopTypeState extends State<ShopType> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'How do you identify your Shop?',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+            'Shop Type',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: 20.0),
-          Wrap(
-            spacing: 8.0,
+          SizedBox(height: 10.0),
+          Image.asset(
+            'assets/8292829.jpg', // Path to your custom illustration asset
+            height: 250, // Adjust height as needed
+          ),
+          SizedBox(height: 10.0),
+          Column(
             children: shopTypes
-                .map((type) => ChoiceChip(
-                      label: Text(type),
-                      selected: selectedShopType == type,
-                      onSelected: (selected) {
-                        setState(() {
-                          if (selected) {
+                .map(
+                  (type) => Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: selectedShopType == type ? Colors.deepPurple : Colors.grey[200],
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
                             selectedShopType = type;
-                          } else {
-                            selectedShopType = null;
-                          }
-                        });
-                      },
-                    ))
+                          });
+                        },
+                        child: Center(
+                          child: Text(
+                            type,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: selectedShopType == type ? Colors.white : Colors.black,
+                              fontWeight: selectedShopType == type ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
                 .toList(),
           ),
+          SizedBox(height: 30.0),
         ],
       ),
     );

@@ -37,11 +37,13 @@ class _AddShopImagesState extends State<AddShopImages> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Shop Images",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Center(
+            child: Text(
+              "Shop Images",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 30),
           SizedBox(
             height: 200,
             child: ListView.builder(
@@ -54,7 +56,7 @@ class _AddShopImagesState extends State<AddShopImages> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(right: 10),
-                        width: 150,
+                        width: 170,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           border: Border.all(color: Colors.grey),
@@ -63,9 +65,12 @@ class _AddShopImagesState extends State<AddShopImages> {
                         child: _images[index] != null
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(15),
-                                child: Image.file(
-                                  _images[index]!,
-                                  fit: BoxFit.cover,
+                                child: AspectRatio(
+                                  aspectRatio: 5/9,
+                                  child: Image.file(
+                                    _images[index]!,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               )
                             : Center(
@@ -90,7 +95,7 @@ class _AddShopImagesState extends State<AddShopImages> {
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(Icons.remove_circle, color: Colors.white),
+                              child: Icon(Icons.remove_circle, color: Colors.purple[200]),
                             ),
                           ),
                         ),
@@ -100,12 +105,14 @@ class _AddShopImagesState extends State<AddShopImages> {
               },
             ),
           ),
-          SizedBox(height: 30),
-          Text(
-            "Shop Description",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          SizedBox(height: 50),
+          Center(
+            child: Text(
+              "Shop Description",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           TextField(
             controller: _descriptionController,
             decoration: InputDecoration(

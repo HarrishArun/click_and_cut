@@ -29,15 +29,15 @@ class _ShopServicesState extends State<ShopServices> {
                       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                       child: Container(
                         padding: EdgeInsets.only(bottom: 5),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.black,
-                            ),
-                          ),
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white,
-                        ),
+                        // decoration: BoxDecoration(
+                        //   border: Border(
+                        //     bottom: BorderSide(
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        //   borderRadius: BorderRadius.circular(15),
+                        //   color: Colors.white,
+                        // ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -72,7 +72,7 @@ class _ShopServicesState extends State<ShopServices> {
           ),
           SizedBox(height: 15,),
           ServicesContainer(),
-          SizedBox(height:40,),
+          // SizedBox(height:40,),
           // ElevatedButton(
           //     onPressed: () {
           //       // Handle the button click to display the selected number of chairs

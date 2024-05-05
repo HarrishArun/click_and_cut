@@ -12,70 +12,74 @@ class _ProofSubmissionState extends State<ProofSubmission> {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'Submit your proof ',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
-            ),
-            // SizedBox(height: 20),
-            // Text(
-            //   '(Aadhar Card, Driving Licence, PAN card, Voter Id)',
-            //   style: TextStyle(fontSize: 16,color: Colors.white54),
-            // ),
-            SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {
-                _showImageUploadDialog(context);
-              },
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                shadowColor: Colors.deepPurple,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-              child: Text(
-                'Upload Proof Image',
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-            ),
-            SizedBox(height: 30),
-            Expanded(
-              child: fileList.isEmpty
-                ? Center(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/empty-archive.png', // Path to your null image asset
-                          height: 200, // Adjust height as needed
-                        ),
-                        Text(
-                          'No proof added!',
-                          style: TextStyle(fontSize: 18, color: Colors.black),
-                        ),
-                      ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            'Submit your proof',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          SizedBox(height: 30),
+          fileList.isNotEmpty
+              ? Expanded(
+                    child: ListView.builder(
+                      itemCount: fileList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          elevation: 3,
+                          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                          child: ListTile(
+                            title: Text(
+                              fileList[index],
+                              style: TextStyle(fontSize: 18, color: Colors.black),
+                            ),
+                            leading: Icon(
+                              Icons.check_circle,
+                              color: Colors.green,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   )
-                : ListView.builder(
-                    itemCount: fileList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text(
-                          fileList[index],
-                          style: TextStyle(fontSize: 18, color: Colors.black),
-                        ),
-                        leading: Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                        ),
-                      );
-                    },
+
+              : Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/empty-archive.png', // Path to your null image asset
+                        height: 200, // Adjust height as needed
+                      ),
+                      Text(
+                        'No proof added!',
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
+                    ],
                   ),
+                ),
+          SizedBox(height: 30),
+          OutlinedButton(
+            onPressed: () {
+              _showImageUploadDialog(context);
+            },
+            style: OutlinedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+              side: BorderSide(color: Colors.deepPurple), // Border color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
             ),
+            child: Text(
+              'Upload Proof Image',
+              style: TextStyle(fontSize: 18, color: Colors.deepPurple),
+            ),
+          ),
+
+          SizedBox(height: 90),
+          if (fileList.isNotEmpty)
             ElevatedButton(
               onPressed: () {
                 _showPolicyDialog(context);
@@ -84,18 +88,17 @@ class _ProofSubmissionState extends State<ProofSubmission> {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Text(
                   'Submit',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 shadowColor: Colors.deepPurple,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
               ),
             ),
-          ],
-        ),
-      );
-    
+        ],
+      ),
+    );
   }
 
   Future<void> _showImageUploadDialog(BuildContext context) async {

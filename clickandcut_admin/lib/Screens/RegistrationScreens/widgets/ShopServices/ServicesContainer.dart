@@ -18,49 +18,45 @@ class _ServicesContainerState extends State<ServicesContainer> {
       'title': 'Haircut',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/skincare.png',
       'title': 'CleanUp',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/nail-polish.png',
       'title': 'Manicure',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/shaving-brush.png',
       'title': 'Shave',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/bleaching.png',
       'title': 'Bleach',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/bride.png',
       'title': 'Party make-up',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/massage.png',
       'title': 'Head massage',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/tanning.png',
       'title': 'Detan',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/pedicure.png',
       'title': 'Pedicure',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/face-mask.png',
       'title': 'Facial',
     },
     {
-      'image': 'assets/cut.png',
+      'image': 'assets/coloring.png',
       'title': 'Hair colouring',
-    },
-    {
-      'image': 'assets/cut.png',
-      'title': 'Massage',
-    },
+    }, 
   ];
   late List<Services>ServicesgridItems;
 
@@ -76,7 +72,7 @@ class _ServicesContainerState extends State<ServicesContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height:400,
+      height:450,
       width: 360,
       decoration: BoxDecoration(
         // color: Colors.blue,
@@ -104,9 +100,9 @@ class ServicesBoxWrap extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
       child: Container(
-        height: 392,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        height: 441,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // SizedBox(height: 20,),
             Row(
@@ -114,14 +110,21 @@ class ServicesBoxWrap extends StatelessWidget {
               children: [
                 ServiceBox(item: servicesGridItems[0]),
                 ServiceBox(item: servicesGridItems[1]),
-                ServiceBox(item: servicesGridItems[2]),
+
               ],
             ),
             SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                ServiceBox(item: servicesGridItems[2]),
                 ServiceBox(item: servicesGridItems[3]),
+              ],
+            ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
                 ServiceBox(item: servicesGridItems[4]),
                 ServiceBox(item: servicesGridItems[5]),
               ],
@@ -132,17 +135,22 @@ class ServicesBoxWrap extends StatelessWidget {
               children: [
                 ServiceBox(item: servicesGridItems[6]),
                 ServiceBox(item: servicesGridItems[7]),
-                ServiceBox(item: servicesGridItems[8]),
               ],
             ),
             SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                ServiceBox(item: servicesGridItems[8]),
                 ServiceBox(item: servicesGridItems[9]),
-                ServiceBox(item: servicesGridItems[10]),
-                ServiceBox(item: servicesGridItems[11]),
               ],
+            ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ServiceBox(item: servicesGridItems[10]),
+              ]
             ),
           ],
         ),
@@ -179,14 +187,14 @@ class _ServiceBoxState extends State<ServiceBox> {
 
       },
       child: Container(
-        height: 75,
-        width: 90,
+        height: 95,
+        width: 150,
         decoration: BoxDecoration(
           border: Border.all(
-            color: isSelected ? Colors.blue : Colors.black,
+            color: isSelected ? Colors.deepPurple : Colors.black,
           ),
           borderRadius: BorderRadius.circular(12),
-          color: isSelected ? Colors.deepPurple[50] : Colors.white,
+          color: isSelected ? Colors.deepPurple[100] : Colors.white,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -195,15 +203,15 @@ class _ServiceBoxState extends State<ServiceBox> {
             children: [
               Image.asset(
                 widget.item.image,
-                height: 25,
-                width: 30,
+                height: 50,
+                width: 40,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 10),
               Text(
                 widget.item.title,
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
