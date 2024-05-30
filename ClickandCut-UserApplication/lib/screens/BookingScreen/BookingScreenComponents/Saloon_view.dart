@@ -55,10 +55,8 @@ class Saloon_view_booking extends StatelessWidget {
     return Column(
       children: [
         CardWidget(data: salons[0]),
-        CardWidget(data: salons[1]),
-        CardWidget(data: salons[2]),
-        CardWidget(data: salons[3]),
-        CardWidget(data: salons[4]),
+        CardWidget(data: salons[0]),
+        CardWidget(data: salons[0]),
       ],
     );
   }
