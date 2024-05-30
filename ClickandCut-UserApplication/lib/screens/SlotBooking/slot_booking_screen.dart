@@ -2,6 +2,8 @@ import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
+import 'Model/SlotsData.dart';
+
 class SlotBookingDetailScreen extends StatefulWidget {
   @override
   _SlotBookingDetailScreenState createState() =>
@@ -12,7 +14,7 @@ class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
   int selectedDayIndex = 0; // Index for the selected day in the calendar
   int selectedTimeIndex = -1; // Selected time from the list of slots
   int duration = 60; // Duration in minutes
-  String selectedCourt = 'Standard Wooden A/C Court 2'; // Selected court
+
   int selectedChairIndex = -1; // Selected chair index
 
   final List<DateSlotData> dates = getDummyData();
@@ -22,13 +24,10 @@ class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.arrow_back),
-        title: Text('Ruckus Herkley'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
-          ),
-        ],
+        title: Text(
+          'Saloon name',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -184,59 +183,4 @@ class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
       ),
     );
   }
-}
-
-class DateSlotData {
-  final DateTime date;
-  final List<TimeSlotData> slots;
-
-  DateSlotData(this.date, this.slots);
-}
-
-class TimeSlotData {
-  final int hour;
-  final bool available;
-  final bool full;
-
-  TimeSlotData(this.hour, this.available, this.full);
-}
-
-List<DateSlotData> getDummyData() {
-  return [
-    DateSlotData(
-      DateTime.now().add(Duration(days: 0)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 3 == 0, index % 4 == 0)),
-    ),
-    DateSlotData(
-      DateTime.now().add(Duration(days: 1)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 3 != 0, index % 4 != 0)),
-    ),
-    DateSlotData(
-      DateTime.now().add(Duration(days: 2)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 2 == 0, index % 3 == 0)),
-    ),
-    DateSlotData(
-      DateTime.now().add(Duration(days: 3)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 2 != 0, index % 3 != 0)),
-    ),
-    DateSlotData(
-      DateTime.now().add(Duration(days: 4)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 4 == 0, index % 5 == 0)),
-    ),
-    DateSlotData(
-      DateTime.now().add(Duration(days: 5)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 4 != 0, index % 5 != 0)),
-    ),
-    DateSlotData(
-      DateTime.now().add(Duration(days: 6)),
-      List.generate(
-          24, (index) => TimeSlotData(index, index % 3 == 0, index % 4 == 0)),
-    ),
-  ];
 }
