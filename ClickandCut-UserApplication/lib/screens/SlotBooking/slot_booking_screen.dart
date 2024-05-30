@@ -2,6 +2,7 @@ import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
+import '../PaymentConfirmationScreen/PaymentConfirmationScreen.dart';
 import 'Model/SlotsData.dart';
 
 class SlotBookingDetailScreen extends StatefulWidget {
@@ -152,6 +153,8 @@ class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
             SizedBox(height: 16.0),
             ElevatedButton(
                 onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BookingScreen()));
                   // Add your booking logic here
                 },
                 style: ElevatedButton.styleFrom(
