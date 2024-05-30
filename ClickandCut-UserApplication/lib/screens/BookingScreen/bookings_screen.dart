@@ -15,7 +15,6 @@ class BookScreen extends StatefulWidget {
 
 class _BookScreenState extends State<BookScreen> {
   @override
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -28,17 +27,17 @@ class _BookScreenState extends State<BookScreen> {
           body: Container(
               //color: Colors.black,
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: ListView(
               // scrollDirection: Axis.vertical,
               children: [
                 Searchbar(),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      CupertinoSegmentedControl(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      child: CupertinoSegmentedControl(
                         children: {
                           0: Text('Saloon'),
                           1: Text(
@@ -58,13 +57,12 @@ class _BookScreenState extends State<BookScreen> {
                         selectedColor: Color(klightpurple),
                         unselectedColor: Colors.white,
                       ),
-                      SizedBox(height: 20),
-                      if (segmentedControlValue == 0)
-                        Saloon_view_booking()
-                      else
-                        Parlour_view_booking(),
-                    ],
-                  ),
+                    ),
+                    if (segmentedControlValue == 0)
+                      Saloon_view_booking()
+                    else
+                      Parlour_view_booking(),
+                  ],
                 ),
               ],
             ),

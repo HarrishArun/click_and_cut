@@ -10,25 +10,29 @@ class Searchbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
-      child: TextField(
-        style: TextStyle(color: Colors.black),
-        decoration: InputDecoration(
+      height: 50.0,
+      child: Center(
+        child: TextField(
+          style: TextStyle(color: Colors.black),
+          decoration: InputDecoration(
             hintText: 'Search...',
             hintStyle: TextStyle(color: Colors.grey),
             prefixIcon: Icon(
               Icons.search,
               color: Color(klightpurple),
             ),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0), // Set border radius
+              borderRadius: BorderRadius.circular(25.0),
               borderSide: BorderSide(color: Color(klightpurple)),
-            )),
-        onChanged: (value) {
-          print('Search query: $value');
-        },
+            ),
+          ),
+          onChanged: (value) {
+            print('Search query: $value');
+          },
+        ),
       ),
     );
   }

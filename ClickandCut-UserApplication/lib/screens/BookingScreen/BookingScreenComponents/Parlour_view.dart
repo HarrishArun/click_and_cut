@@ -1,5 +1,4 @@
 import 'package:click_and_cut/models/salon.dart';
-import 'package:click_and_cut/screens/saloondetails_screen/SaloonDetailsScreen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/card.dart';
@@ -56,10 +55,8 @@ class Parlour_view_booking extends StatelessWidget {
     return Column(
       children: [
         CardWidget(data: salons[0]),
-        CardWidget(data: salons[1]),
-        CardWidget(data: salons[2]),
-        CardWidget(data: salons[3]),
-        CardWidget(data: salons[4]),
+        CardWidget(data: salons[0]),
+        CardWidget(data: salons[0]),
       ],
     );
   }
