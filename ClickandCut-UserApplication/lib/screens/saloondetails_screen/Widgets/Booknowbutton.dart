@@ -1,3 +1,4 @@
+import 'package:click_and_cut/screens/SlotBooking/slot_booking_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../const.dart';
@@ -13,7 +14,12 @@ class Booknow_Button extends StatelessWidget {
       child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SlotBookingDetailScreen()));
+            },
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
