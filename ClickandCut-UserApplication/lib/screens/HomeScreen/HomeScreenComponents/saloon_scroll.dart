@@ -1,4 +1,5 @@
 import 'package:click_and_cut/main.dart';
+import 'package:click_and_cut/models/salon.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -9,15 +10,57 @@ import '../../../components/seemorecard.dart';
 import '../../saloondetails_screen/SaloonDetailsScreen.dart';
 
 class saloon_scroll extends StatefulWidget {
-  const saloon_scroll({
+  saloon_scroll({
     super.key,
   });
-
   @override
   State<saloon_scroll> createState() => _saloon_scrollState();
 }
 
 class _saloon_scrollState extends State<saloon_scroll> {
+  final List<Salon> salons = [
+    Salon(
+        image: ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+        name: "Toni and Guy",
+        area: "Ramapuram, Chennai",
+        offerPercentage: "4.5",
+        amount: "15",
+        rating: "1000",
+        time: "5AM-9AM"),
+    Salon(
+        image: ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+        name: "Toni and Guy",
+        area: "Ramapuram, Chennai",
+        offerPercentage: "4.5",
+        amount: "15",
+        rating: "1000",
+        time: "5AM-9AM"),
+    Salon(
+        image: ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+        name: "Toni and Guy",
+        area: "Ramapuram, Chennai",
+        offerPercentage: "4.5",
+        amount: "15",
+        rating: "1000",
+        time: "5AM-9AM"),
+    Salon(
+        image: ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+        name: "Toni and Guy",
+        area: "Ramapuram, Chennai",
+        offerPercentage: "4.5",
+        amount: "15",
+        rating: "1000",
+        time: "5AM-9AM"),
+    Salon(
+        image: ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
+        name: "Toni and Guy",
+        area: "Ramapuram, Chennai",
+        offerPercentage: "4.5",
+        amount: "15",
+        rating: "1000",
+        time: "5AM-9AM"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -66,71 +109,11 @@ class _saloon_scrollState extends State<saloon_scroll> {
           SizedBox(
             height: 250,
             child: ListView(scrollDirection: Axis.horizontal, children: [
-              CardWidget(
-                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy",
-                  "Ramapuram",
-                  "4.5",
-                  "15",
-                  "1000",
-                  SaloonDetailsPage(
-                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                    "Toni and Guy",
-                    "5AM-9PM",
-                    "Ramapuram,Chennai",
-                  )),
-              CardWidget(
-                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy",
-                  "Ramapuram",
-                  "4.5",
-                  "15",
-                  "1000",
-                  SaloonDetailsPage(
-                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                    "Toni and Guy",
-                    "5AM-9PM",
-                    "Ramapuram,Chennai",
-                  )),
-              CardWidget(
-                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy",
-                  "Ramapuram",
-                  "4.5",
-                  "15",
-                  "1000",
-                  SaloonDetailsPage(
-                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                    "Toni and Guy",
-                    "5AM-9PM",
-                    "Ramapuram,Chennai",
-                  )),
-              CardWidget(
-                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy",
-                  "Ramapuram",
-                  "4.5",
-                  "15",
-                  "1000",
-                  SaloonDetailsPage(
-                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                    "Toni and Guy",
-                    "5AM-9PM",
-                    "Ramapuram,Chennai",
-                  )),
-              CardWidget(
-                  ["lib/assets/img1.jpeg", "lib/assets/img1.jpeg"],
-                  "Toni and Guy",
-                  "Ramapuram",
-                  "4.5",
-                  "15",
-                  "1000",
-                  SaloonDetailsPage(
-                    ["lib/assets/img1.jpeg", "lib/assets/img2.jpeg"],
-                    "Toni and Guy",
-                    "5AM-9PM",
-                    "Ramapuram,Chennai",
-                  )),
+              CardWidget(data: salons[0]),
+              CardWidget(data: salons[1]),
+              CardWidget(data: salons[2]),
+              CardWidget(data: salons[3]),
+              CardWidget(data: salons[4]),
               seeMoreCard("See More Saloons ", () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,
