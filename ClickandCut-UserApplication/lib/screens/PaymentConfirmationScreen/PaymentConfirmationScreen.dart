@@ -88,7 +88,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               Text(
                 'Tony & Guy',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Roboto',
                 ),
@@ -190,9 +190,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           Container(
             margin: EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin:
+                    Alignment.topLeft, // Define the start point of the gradient
+                end: Alignment
+                    .bottomRight, // Define the end point of the gradient
+                colors: [
+                  Color(klightpurple), // Start color of the gradient
+                  Color(kdarkpurple), // End color of the gradient
+                ],
+              ),
               borderRadius:
-                  BorderRadius.circular(8), // Adjust the radius as needed
-              color: Color(klightpurple),
+                  BorderRadius.circular(10), // Add border radius if needed
             ),
             child: TextButton(
               onPressed: () {
@@ -403,8 +412,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           padding: EdgeInsets.symmetric(
                               vertical: 10, horizontal: 20),
                           decoration: BoxDecoration(
-                            color: Color(klightpurple), // Background color
-                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                              begin: Alignment
+                                  .topLeft, // Define the start point of the gradient
+                              end: Alignment
+                                  .bottomRight, // Define the end point of the gradient
+                              colors: [
+                                Color(
+                                    klightpurple), // Start color of the gradient
+                                Color(kdarkpurple), // End color of the gradient
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(
+                                10), // Add border radius if needed
                           ),
                           child: Text(
                             'Proceed to Pay',
@@ -475,8 +495,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           padding: EdgeInsets.symmetric(
                               vertical: 10, horizontal: 20),
                           decoration: BoxDecoration(
-                            color: Color(klightpurple), // Background color
-                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(
+                              begin: Alignment
+                                  .topLeft, // Define the start point of the gradient
+                              end: Alignment
+                                  .bottomRight, // Define the end point of the gradient
+                              colors: [
+                                Color(
+                                    klightpurple), // Start color of the gradient
+                                Color(kdarkpurple), // End color of the gradient
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(
+                                10), // Add border radius if needed
                           ),
                           child: Text(
                             'Proceed to Pay',
