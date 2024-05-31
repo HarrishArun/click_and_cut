@@ -1,6 +1,7 @@
 import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:intl/intl.dart';
 
 import '../PaymentConfirmationScreen/PaymentConfirmationScreen.dart';
 import 'Model/SlotsData.dart';
@@ -12,12 +13,16 @@ class SlotBookingDetailScreen extends StatefulWidget {
 }
 
 class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
-  int selectedDayIndex = 0; // Index for the selected day in the calendar
-  int selectedTimeIndex = -1; // Selected time from the list of slots
-  int duration = 60; // Duration in minutes
+  int selectedDayIndex = 0;
+  int selectedTimeIndex = -1;
+  int duration = 60;
 
   int selectedChairIndex = -1; // Selected chair index
-
+  DateTime selectedDate = DateTime.now();
+  final List<DateTime> pickdate = List.generate(
+    30,
+    (index) => DateTime.now().subtract(Duration(days: -index)),
+  );
   final List<DateSlotData> dates = getDummyData();
 
   @override
@@ -52,30 +57,100 @@ class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
               ),
             ),
             SizedBox(height: 16.0),
-            // Center(
-            //   child: Column(
-            //     children: [
-            //       Icon(Icons.sports_tennis, size: 50),
-            //       Text('Badminton'),
-            //     ],
-            //   ),
-            // ),
-            SizedBox(height: 16.0),
-            Container(
-              height: 100,
-              child: DatePicker(
-                DateTime.now(),
-                initialSelectedDate: DateTime.now(),
-                selectionColor: Colors.green,
-                onDateChange: (date) {
-                  setState(() {
-                    selectedDayIndex =
-                        dates.indexWhere((d) => d.date.day == date.day);
-                    selectedTimeIndex = -1;
-                    selectedChairIndex = -1;
-                  });
-                },
-                daysCount: 7,
+            Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: 120,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.green.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 120,
+                        child: PageView.builder(
+                          controller: PageController(viewportFraction: 0.25),
+                          itemCount: pickdate.length,
+                          onPageChanged: (index) {
+                            setState(() {
+                              selectedDayIndex = index % 7;
+                              selectedTimeIndex = -1;
+                              selectedChairIndex = -1;
+                              selectedDate = pickdate[index];
+                            });
+                          },
+                          itemBuilder: (context, index) {
+                            DateTime date = pickdate[index];
+                            bool isSelected = date.day == selectedDate.day &&
+                                date.month == selectedDate.month &&
+                                date.year == selectedDate.year;
+
+                            return Transform.scale(
+                              scale: isSelected ? 1.2 : 1.0,
+                              child: Container(
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      DateFormat('MMM').format(date).substring(
+                                          0,
+                                          3), // Displaying the first three letters of the month
+                                      style: TextStyle(
+                                        color: isSelected
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontSize: isSelected ? 20 : 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      date.day.toString(),
+                                      style: TextStyle(
+                                        color: isSelected
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontSize: isSelected ? 24 : 18,
+                                        fontWeight: isSelected
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
+                                      ),
+                                    ),
+                                    Text(
+                                      DateFormat('EEE').format(date),
+                                      style: TextStyle(
+                                        color: isSelected
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontSize: isSelected ? 20 : 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 16.0),
@@ -153,8 +228,10 @@ class _SlotBookingDetailScreenState extends State<SlotBookingDetailScreen> {
             SizedBox(height: 16.0),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BookingScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CheckoutScreen()));
                   // Add your booking logic here
                 },
                 style: ElevatedButton.styleFrom(

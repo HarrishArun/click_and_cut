@@ -29,7 +29,7 @@ class _CardWidgetState extends State<CardWidget> {
             pageTransitionAnimation: PageTransitionAnimation.cupertino)
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.all(8),
         child: Stack(
           children: [
             Container(

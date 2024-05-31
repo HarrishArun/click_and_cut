@@ -1,34 +1,49 @@
+import 'package:click_and_cut/const.dart';
+import 'package:click_and_cut/screens/PaymentConfirmationScreen/cupon_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../CuponScreen/cupon_screen.dart';
-
-class BookingScreen extends StatefulWidget {
+class CheckoutScreen extends StatefulWidget {
   @override
-  _BookingScreenState createState() => _BookingScreenState();
+  _CheckoutScreenState createState() => _CheckoutScreenState();
 }
 
-class _BookingScreenState extends State<BookingScreen> {
-  double courtPrice = 640.0;
-  double convenienceFee = 7.55;
-  double fitnessCover = 9.0;
-  double totalAmount = 656.55;
-  double discount = 0.0;
+class _CheckoutScreenState extends State<CheckoutScreen> {
+  double chairPrice = 100.00;
+  double convenienceFee = 3.00;
+  late double totalAmount;
+  double discount = 0.00;
+  late double cgst;
+  late double sgst;
+  late String discountCode = "";
+  bool isFullPaymentSelected = false;
 
   void applyCoupon(String code) {
     setState(() {
       if (code == 'PLAYON') {
-        discount = courtPrice * 0.15;
-        if (discount > 150) discount = 150;
+        discount = chairPrice * 0.25;
+        discountCode = 'PLAYON';
+        if (discount > 10) discount = 10;
       } else if (code == 'FITFORFUN') {
-        discount = courtPrice * 0.15;
-        if (discount > 480) discount = 480;
+        discount = chairPrice * 0.50;
+        discountCode = 'FITFORFUN';
+        if (discount > 20) discount = 20;
       } else if (code == 'PLAYMORE') {
-        discount = courtPrice * 0.20;
-        if (discount > 960) discount = 960;
+        discount = chairPrice * 0.20;
+        discountCode = 'PLAYMORE';
+        if (discount > 15) discount = 15;
       } else {
         discount = 0.0;
       }
-      totalAmount = courtPrice + convenienceFee + fitnessCover - discount;
+      totalAmount = totalAmount - discount;
+    });
+  }
+
+  void initState() {
+    super.initState();
+    setState(() {
+      cgst = 0.09 * chairPrice;
+      sgst = 0.09 * chairPrice;
+      totalAmount = chairPrice + cgst + sgst;
     });
   }
 
@@ -36,108 +51,450 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ruckus Herkley'),
+        title: Text('Checkout'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            bookingDetails(),
-            Divider(),
-            applyCouponButton(context),
-            SizedBox(height: 10),
-            totalAmountSection(),
-            SizedBox(height: 10),
-            proceedToPayButton()
-          ],
+          children: [DetailsSelected()],
         ),
       ),
     );
   }
 
-  Widget bookingDetails() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('BADMINTON',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        SizedBox(height: 10),
-        Text('Standard Wooden A/C Court 1', style: TextStyle(fontSize: 16)),
-        Text('Fri, 31st May', style: TextStyle(fontSize: 16)),
-        Text('01:00 AM to 02:00 AM', style: TextStyle(fontSize: 16)),
-        Text('INR $courtPrice', style: TextStyle(fontSize: 16)),
-        Text('Fitness Cover', style: TextStyle(fontSize: 16)),
-      ],
-    );
-  }
-
-  Widget applyCouponButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () async {
-        final result = await Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CouponScreen(applyCoupon: applyCoupon),
+  Widget DetailsSelected() {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
           ),
-        );
-        if (result != null) {
-          applyCoupon(result);
-        }
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Center(
-          child: Text('Apply Coupon',
-              style: TextStyle(color: Colors.white, fontSize: 16)),
-        ),
+        ],
       ),
-    );
-  }
-
-  Widget totalAmountSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Total Amount',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            Text('INR ${totalAmount.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-          ],
-        ),
-        SizedBox(height: 5),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Advance payable', style: TextStyle(fontSize: 16)),
-            Text('INR ${totalAmount.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 16)),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget proceedToPayButton() {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Center(
-          child: Text('Proceed to Pay',
-              style: TextStyle(color: Colors.white, fontSize: 16)),
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Tony & Guy',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto',
+                ),
+              ),
+              Icon(
+                Icons.spa, // Example icon, replace with your preferred icon
+                color: Colors.black,
+                size: 24, // Customize icon color as needed
+              ),
+            ],
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              children: [
+                Icon(
+                  Icons
+                      .location_on, // Example icon, replace with your preferred icon
+                  color: Colors.grey,
+                  size: 18,
+                ),
+                SizedBox(width: 4),
+                Text(
+                  'Area: ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'XYZ Street',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              children: [
+                Icon(
+                  Icons
+                      .access_time, // Example icon, replace with your preferred icon
+                  color: Colors.grey,
+                  size: 18,
+                ),
+                SizedBox(width: 4),
+                Text(
+                  'Selected Time: ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '3:00 PM',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.chair, // Example icon, replace with your preferred icon
+                  color: Colors.grey,
+                  size: 18,
+                ),
+                SizedBox(width: 4),
+                Text(
+                  'Selected Chair: ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'Chair A',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(8), // Adjust the radius as needed
+              color: Color(klightpurple),
+            ),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CouponScreen(applyCoupon: applyCoupon),
+                  ),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.local_offer, // Coupon code icon
+                    color: Colors.white,
+                    size: 20,
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    'Apply Coupon', // Text "Apply Coupon"
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "Amount",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Subtotal',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '+\$${chairPrice}', // Example: positive amount
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green, // Adjust color as needed
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Discount ${discountCode}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '-\$${discount}', // Example: negative amount
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red, // Adjust color as needed
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'CGST 5%',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '+\$${cgst}', // Example: positive amount
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green, // Adjust color as needed
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'SGST 8%',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '+\$${sgst}', // Example: negative amount
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green, // Adjust color as needed
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Convinience Fee',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '+\$0.00', // Example: negative amount
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green, // Adjust color as needed
+                    ),
+                  ),
+                ],
+              ),
+              Divider(height: 20, thickness: 2), // Divider line
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '\$${totalAmount}', // Total amount calculation here
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green, // Adjust color as needed
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            height: 200, // Increased container height
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Pay Advance',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16), // Larger font size
+                      ),
+                      SizedBox(height: 12), // Increased height
+                      Text(
+                        '\$${(0.20 * totalAmount).toStringAsFixed(2)}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20, // Larger font size
+                          color: Colors.green, // Adjust color as needed
+                        ),
+                      ),
+                      SizedBox(height: 12), // Increased height
+                      // Perks
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '- Early access to events',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                          Text(
+                            '- Exclusive discounts',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      Spacer(), // Increased height
+                      GestureDetector(
+                        onTap: () {
+                          // Proceed to Pay button action
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          decoration: BoxDecoration(
+                            color: Color(klightpurple), // Background color
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            'Proceed to Pay',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14, // Larger font size
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Pay Full',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16), // Larger font size
+                      ),
+                      SizedBox(height: 12), // Increased height
+                      Text(
+                        '\$${totalAmount}', // Total amount calculation here
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20, // Larger font size
+                          color: Colors.green, // Adjust color as needed
+                        ),
+                      ),
+                      SizedBox(height: 12), // Increased height
+                      // Perks
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '- Free shipping',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                          Text(
+                            '- Loyalty points',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                      Spacer(), // Increased height
+                      GestureDetector(
+                        onTap: () {
+                          // Proceed to Pay button action
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          decoration: BoxDecoration(
+                            color: Color(klightpurple), // Background color
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            'Proceed to Pay',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14, // Larger font size
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
