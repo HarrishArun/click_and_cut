@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../components/Appbar.dart';
 import '../../components/card.dart';
-import '../ShopDetails/shop_details.dart';
 
 class Favourites extends StatelessWidget {
   @override

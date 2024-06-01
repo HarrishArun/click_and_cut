@@ -1,4 +1,3 @@
-import 'package:click_and_cut/main.dart';
 import 'package:click_and_cut/models/salon.dart';
 import 'package:click_and_cut/screens/Booking/bookings.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Salon {
   final List<String> image;
   final String name;

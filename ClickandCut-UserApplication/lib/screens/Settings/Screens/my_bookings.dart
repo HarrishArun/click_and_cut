@@ -58,12 +58,6 @@ class _MyBookingScreenState extends State<MyBookingScreen>
           ListView(
             padding: EdgeInsets.all(16.0),
             children: [
-              // Container(
-              //   padding: EdgeInsets.all(16.0),
-              //   child: Center(
-              //     child: Text('Upcoming Bookings'),
-              //   ),
-              // ),
               SalonBookingCard(
                 salonName: 'Sample Salon 1',
                 date: DateTime.now().add(Duration(days: 1)),
@@ -78,7 +72,6 @@ class _MyBookingScreenState extends State<MyBookingScreen>
                 toTime: TimeOfDay(hour: 16, minute: 0),
                 totalPrice: 120.0,
               ),
-              // Add more SalonBookingCard widgets for other bookings
             ],
           ),
 
@@ -89,7 +82,6 @@ class _MyBookingScreenState extends State<MyBookingScreen>
               child: Text('No Past Bookings'),
             ),
           ),
-          // Cancelled Bookings Tab
           Container(
             padding: EdgeInsets.all(16.0),
             child: Center(
@@ -146,7 +138,7 @@ class SalonBookingCard extends StatelessWidget {
               children: [
                 _buildServiceContainer(Icons.content_cut, 'Haircut'),
                 _buildServiceContainer(Icons.shower, 'Shave'),
-                _buildServiceContainer(Icons.spa, 'HeadMassage'),
+                _buildServiceContainer(Icons.spa, 'Massage'),
                 _buildServiceContainer(Icons.face, 'Facial'),
               ],
             ),
@@ -178,11 +170,11 @@ class SalonBookingCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 25.0),
+            Icon(icon, size: 15),
             SizedBox(height: 3.0),
             Text(
               label,
-              style: TextStyle(fontSize: 6),
+              style: TextStyle(fontSize: 10),
             ),
           ],
         ),

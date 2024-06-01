@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../models/feed.dart';
-import '../feeds.dart';
 import 'comment_bottomsheet.dart';
 import 'comment_dialog.dart';
 

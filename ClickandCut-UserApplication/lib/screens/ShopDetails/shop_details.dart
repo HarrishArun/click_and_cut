@@ -530,7 +530,6 @@ class _ServiceItemState extends State<ServiceItem> {
   late bool isSelected;
   void toggleServiceSelection(String serviceName) {
     widget.updateselectedServices(serviceName);
-    print('${widget.selectedServices}');
   }
 
   void initState() {

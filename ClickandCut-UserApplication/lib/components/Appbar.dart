@@ -1,4 +1,4 @@
-import 'package:click_and_cut/screens/Profile/Screens/profile.dart';
+import 'package:click_and_cut/screens/Settings/Screens/profile.dart';
 import 'package:click_and_cut/services/locationservices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

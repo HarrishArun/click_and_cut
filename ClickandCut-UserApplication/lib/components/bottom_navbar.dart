@@ -3,7 +3,7 @@ import 'package:click_and_cut/screens/Booking/bookings.dart';
 import 'package:click_and_cut/screens/Feeds/feeds.dart';
 import 'package:click_and_cut/screens/Favourite/favourite.dart';
 import 'package:click_and_cut/screens/Home/home.dart';
-import 'package:click_and_cut/screens/Profile/profile.dart';
+import 'package:click_and_cut/screens/Settings/Settings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -28,7 +28,7 @@ class _bottomnavbarState extends State<bottomnavbar> {
         Bookings(),
         Favourites(),
         FeedsScreen(),
-        ProfileScreen(),
+        Settings(),
       ],
       items: [
         PersistentBottomNavBarItem(

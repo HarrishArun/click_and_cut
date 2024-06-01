@@ -1,4 +1,3 @@
-import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/Appbar.dart';
@@ -15,13 +14,13 @@ class _FeedsScreenState extends State<FeedsScreen> {
     FeedItem(
       imageUrl: 'lib/assets/img1.jpeg',
       shopName: 'Shop 1',
-      avatarUrl: 'assets/images/avatar1.jpg',
+      avatarUrl: 'lib/assets/profile.png',
       caption: 'Caption for image 1',
     ),
     FeedItem(
       imageUrl: 'lib/assets/img1.jpeg',
       shopName: 'Shop 2',
-      avatarUrl: 'assets/images/avatar2.jpg',
+      avatarUrl: 'lib/assets/profile.png',
       caption: 'Caption for image 2',
     ),
     // Add more items as needed

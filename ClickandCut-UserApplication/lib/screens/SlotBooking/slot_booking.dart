@@ -1,6 +1,5 @@
 import 'package:click_and_cut/const.dart';
 import 'package:flutter/material.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:intl/intl.dart';
 
 import '../PaymentCheckout/payment_checkout.dart';

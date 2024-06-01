@@ -1,4 +1,3 @@
-import 'package:click_and_cut/main.dart';
 import 'package:flutter/material.dart';
 
 class seeMoreCard extends StatelessWidget {

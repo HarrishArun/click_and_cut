@@ -4,7 +4,7 @@ import 'package:click_and_cut/screens/Feeds/feeds.dart';
 import 'package:click_and_cut/screens/Landing/landing.dart';
 import 'package:click_and_cut/screens/Favourite/favourite.dart';
 import 'package:click_and_cut/screens/Home/home.dart';
-import 'package:click_and_cut/screens/Profile/profile.dart';
+import 'package:click_and_cut/screens/Settings/Settings.dart';
 import 'package:click_and_cut/services/locationservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     Bookings(),
     Favourites(),
     FeedsScreen(),
-    ProfileScreen(),
+    Settings(),
   ];
 
   void _onItemTapped(int index) {

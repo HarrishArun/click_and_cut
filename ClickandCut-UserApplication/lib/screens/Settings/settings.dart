@@ -1,23 +1,22 @@
+import 'package:click_and_cut/components/appbar.dart';
 import 'package:click_and_cut/const.dart';
 import 'package:click_and_cut/screens/Landing/landing.dart';
-import 'package:click_and_cut/screens/Profile/Screens/faq.dart';
-import 'package:click_and_cut/screens/Profile/Screens/my_bookings.dart';
-import 'package:flutter/material.dart';
-
+import 'package:click_and_cut/screens/Settings/Screens/faq.dart';
+import 'package:click_and_cut/screens/Settings/Screens/help_and_support.dart';
+import 'package:click_and_cut/screens/Settings/Screens/invite.dart';
+import 'package:click_and_cut/screens/Settings/Screens/my_bookings.dart';
+import 'package:click_and_cut/screens/Settings/Screens/profile.dart';
+import 'package:click_and_cut/screens/Settings/Screens/terms_and_cond.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import '../../components/Appbar.dart';
-import 'Screens/profile.dart';
-
-class ProfileScreen extends StatelessWidget {
+class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        //elevation: 2,
         title: Appbar(),
       ),
       body: ListView(
@@ -36,7 +35,12 @@ class ProfileScreen extends StatelessWidget {
           OptionCard(
             icon: Icons.help,
             title: 'Help & Support',
-            ontap: () {},
+            ontap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HelpAndSupportPage()));
+            },
           ),
           OptionCard(
             icon: Icons.question_answer,
@@ -49,12 +53,20 @@ class ProfileScreen extends StatelessWidget {
           OptionCard(
             icon: Icons.person_add,
             title: 'Invite',
-            ontap: () {},
+            ontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InviteScreen()));
+            },
           ),
           OptionCard(
             icon: Icons.policy,
             title: 'Terms and Conditions',
-            ontap: () {},
+            ontap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TermsAndConditionsPage()));
+            },
           ),
           OptionCard(
             icon: Icons.logout,
@@ -83,7 +95,7 @@ class ProfileCard extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('assets/profile_image.jpg'),
+              backgroundImage: AssetImage('lib/assets/profile.png'),
               radius: 40.0,
             ),
             SizedBox(width: 20.0),

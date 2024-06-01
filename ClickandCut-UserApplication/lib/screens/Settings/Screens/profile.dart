@@ -6,7 +6,6 @@ class ProfileDetailScreen extends StatefulWidget {
 }
 
 class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
-  // Dummy data for user details
   String name = 'John Doe';
   String email = 'johndoe@example.com';
   String phoneNumber = '+1 234 567 890';
@@ -16,7 +15,6 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   int pastBookingCount = 5;
   int futureBookingCount = 3;
 
-  // Editing mode flag
   bool isEditing = false;
 
   @override
@@ -49,7 +47,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
             Card(
               color: Colors.white,
               margin: EdgeInsets.only(bottom: 16.0),
-              elevation: 4.0,
+              elevation: 2.0,
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -60,8 +58,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                       children: [
                         CircleAvatar(
                           radius: 40,
-                          backgroundImage:
-                              AssetImage('assets/profile_image.jpg'),
+                          backgroundImage: AssetImage('lib/assets/profile.png'),
                         ),
                         SizedBox(height: 10.0),
                         Column(
@@ -86,12 +83,15 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                           Text(
                             '$pastBookingCount',
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            'Past Bookings',
+                            'Past \nBookings',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -103,10 +103,11 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                           Text(
                             '$futureBookingCount',
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            'Future Bookings',
+                            'Future \nBookings',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold),
                           ),
@@ -120,7 +121,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
             Card(
               color: Colors.white,
               margin: EdgeInsets.only(bottom: 16.0),
-              elevation: 4.0,
+              elevation: 2.0,
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
