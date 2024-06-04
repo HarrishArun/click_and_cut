@@ -1,3 +1,6 @@
+
+import 'package:clickandcut_admin/Screens/HomePage/homePage.dart';
+import 'package:clickandcut_admin/Screens/HomePage/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -78,7 +81,10 @@ class ApprovalResultScreen extends StatelessWidget {
               SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  // Navigate to Home screen
+                  Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),

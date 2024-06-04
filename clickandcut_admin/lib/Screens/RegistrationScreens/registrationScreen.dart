@@ -70,7 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 
                 mainAxisAlignment:(_currentStep != 10 && _currentStep!=0)
                       ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.spaceEvenly,
+                      : (_currentStep == 10)?MainAxisAlignment.start:MainAxisAlignment.end,
                 children: [
                   if (_currentStep != 0)
                     ElevatedButton(
