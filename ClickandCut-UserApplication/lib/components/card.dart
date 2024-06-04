@@ -1,5 +1,5 @@
 import 'package:click_and_cut/models/salon.dart';
-import 'package:click_and_cut/screens/saloondetails_screen/SaloonDetailsScreen.dart';
+import 'package:click_and_cut/screens/ShopDetails/shop_details.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -24,7 +24,7 @@ class _CardWidgetState extends State<CardWidget> {
     return InkWell(
       onTap: () => {
         PersistentNavBarNavigator.pushNewScreen(context,
-            screen: SaloonDetailsPage(data: widget.data),
+            screen: ShopDetails(data: widget.data),
             withNavBar: false,
             pageTransitionAnimation: PageTransitionAnimation.cupertino)
       },

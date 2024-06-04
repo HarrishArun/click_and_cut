@@ -1,10 +1,10 @@
-import 'package:click_and_cut/components/bottomnavbar.dart';
-import 'package:click_and_cut/screens/BookingScreen/bookings_screen.dart';
-import 'package:click_and_cut/screens/LoginPage/LandingPage.dart';
-import 'package:click_and_cut/screens/favourite.dart';
-import 'package:click_and_cut/screens/HomeScreen/homepage.dart';
-import 'package:click_and_cut/screens/FeedsScreen/FeedsScreen.dart';
-import 'package:click_and_cut/screens/ProfileScreen/ProfileScreen.dart';
+import 'package:click_and_cut/components/bottom_navbar.dart';
+import 'package:click_and_cut/screens/Booking/bookings.dart';
+import 'package:click_and_cut/screens/Feeds/feeds.dart';
+import 'package:click_and_cut/screens/Landing/landing.dart';
+import 'package:click_and_cut/screens/Favourite/favourite.dart';
+import 'package:click_and_cut/screens/Home/home.dart';
+import 'package:click_and_cut/screens/Settings/Settings.dart';
 import 'package:click_and_cut/services/locationservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,11 +48,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
-    Screen1(),
-    BookScreen(),
-    Screen3(),
+    HomeScreen(),
+    Bookings(),
+    Favourites(),
     FeedsScreen(),
-    ProfileScreen(),
+    Settings(),
   ];
 
   void _onItemTapped(int index) {
